@@ -14,12 +14,13 @@ remotePath = ''
 port = 0
 provider = ''
 secure = '1'
+pattern = '*.csv'
 
 try:
     opts, args = getopt.getopt(
-        sys.argv[1:], "h:p:u:s:l:r:o::c::",
+        sys.argv[1:], "h:p:u:s:l:r:o::c::e::",
         ["host=", "port=", "username=", "secret=", "local-path=",
-         "remote-path=", "provider=", "is-secure="]
+         "remote-path=", "provider=", "is-secure=", "files-extension"]
     )
     logging.basicConfig(filename='upload.log', level=logging.DEBUG)
 except getopt.GetoptError:
@@ -31,6 +32,7 @@ except getopt.GetoptError:
             -p, --port: FTP username
             -s, --secret: FTP account password
             -l, --local-path: Local path where files are
+            -e, --files-extension:[optional] file extension default csv
             -r, --remote-path: Remote path where files will be uploaded
             -o, --provider:[optional] Provider name
             -c, --is-secure:[optional] 1 for sftp or 2 for ftp
@@ -55,6 +57,8 @@ for opt, arg in opts:
         provider = arg
     elif opt in ('-c', '--is-secure'):
         secure = arg
+    elif opt in ('-e', '--files-extension'):
+        pattern = '*.' + arg
 
 if not provider:
     provider = username
@@ -64,12 +68,13 @@ logging.debug('Host is ', host)
 logging.debug('Username is ', username)
 logging.debug('Local path is ', localPath)
 logging.debug('Remote path is ', remotePath)
+logging.debug('File extension is ', pattern)
 
 connectionInfo = {'host': host, 'username': username, 'password': secret, 'port': int(port)}
 
 if secure == '1':
     logging.debug('Strategy secure')
-    strategy.secure.secure_upload(connectionInfo, localPath, remotePath, provider, logging)
+    strategy.secure.secure_upload(connectionInfo, localPath, remotePath, provider, pattern, logging)
 elif secure == '0':
     logging.debug('Strategy unsecured')
-    strategy.unsecure.unsecured_upload(connectionInfo, localPath, remotePath, provider, logging)
+    strategy.unsecure.unsecured_upload(connectionInfo, localPath, remotePath, provider, pattern, logging)

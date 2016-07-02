@@ -2,7 +2,7 @@ import ftplib
 import fnmatch
 import os
 
-def unsecured_upload(connection_info, local_path, remote_path, provider, logging):
+def unsecured_upload(connection_info, local_path, remote_path, provider, pattern, logging):
 
     logging.warning('Starting strategy unsecured...')
 
@@ -12,7 +12,7 @@ def unsecured_upload(connection_info, local_path, remote_path, provider, logging
     ftp.cwd(remote_path)
 
     for file in os.listdir(local_path):
-        if fnmatch.fnmatch(file, provider + '*.csv'):
+        if fnmatch.fnmatch(file, provider + pattern):
             logging.info('Uploading file %s...' % file)
             ftp.storlines('STOR %s' % file, open('%s%s' % (local_path, file), 'r'))
 
