@@ -83,7 +83,16 @@ request.pattern = pattern
 
 if secure == '1':
     logging.debug('Strategy secure')
-    strategy.secure.secure_upload(request, logging)
+    try:
+        strategy.secure.secure_upload(request, logging)
+    except Exception, e:
+        logging.error(e.message)
+        sys.exit(2)
+
 elif secure == '0':
     logging.debug('Strategy unsecured')
-    strategy.unsecure.unsecured_upload(request, logging)
+    try:
+        strategy.unsecure.unsecured_upload(request, logging)
+    except Exception, e:
+        logging.error(e.message)
+        sys.exit(2)
