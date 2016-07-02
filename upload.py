@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
-import sys
 import getopt
+import logging
+import sys
+
 import strategy.secure
 import strategy.unsecure
-import logging
+from strategy import requestParams
 
 host = ''
 username = ''
@@ -72,9 +74,16 @@ logging.debug('File extension is ', pattern)
 
 connectionInfo = {'host': host, 'username': username, 'password': secret, 'port': int(port)}
 
+request = requestParams.RequestParams()
+request.connectionInfo = connectionInfo
+request.localPath = localPath
+request.remotePath = remotePath
+request.provider = provider
+request.pattern = pattern
+
 if secure == '1':
     logging.debug('Strategy secure')
-    strategy.secure.secure_upload(connectionInfo, localPath, remotePath, provider, pattern, logging)
+    strategy.secure.secure_upload(request, logging)
 elif secure == '0':
     logging.debug('Strategy unsecured')
-    strategy.unsecure.unsecured_upload(connectionInfo, localPath, remotePath, provider, pattern, logging)
+    strategy.unsecure.unsecured_upload(request, logging)
