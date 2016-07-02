@@ -2,6 +2,7 @@ Basic script to upload file to sftp or ftp strategy
 ===================================================
 
 Usage:
+
         ./upload.py <options>
         Options:
             -h, --host: FTP hostname
