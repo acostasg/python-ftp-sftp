@@ -13,3 +13,14 @@ Usage:
             -r, --remote-path: Remote path where files will be uploaded
             -o, --provider:[optional] Provider name
             -c, --is-secure:[optional] 1 for sftp or 2 for ftp
+            
+##TODO
+
+* Create application appUpload.py containing the yml configuration:
+        
+        * app.yml [directories and other settings]
+        
+        * connections.yml [external ftp and sftp settings]
+        
+* Upload.py to cronUpload.py rename so that it can be used with parameters for planners systems (schedulers) such as jenks, cron,...
+...
