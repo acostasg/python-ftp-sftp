@@ -1,0 +1,8 @@
+local:
+    path      : /local/origin/path
+    extension : *.csv
+    prefix    : report_
+remote:
+    path  : /remote/default/path
+strategy:
+    default: secure

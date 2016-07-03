@@ -28,7 +28,7 @@ try:
 except getopt.GetoptError:
     logging.warning(
         """Usage:\n
-        ./upload.py <options>\n
+        ./cronUpload.py <options>\n
         Options:
             -h, --host: FTP hostname
             -p, --port: FTP username
@@ -36,7 +36,7 @@ except getopt.GetoptError:
             -l, --local-path: Local path where files are
             -e, --files-extension:[optional] file extension default csv
             -r, --remote-path: Remote path where files will be uploaded
-            -o, --provider:[optional] Provider name
+            -o, --prefix:[optional] Initial characters to files name
             -c, --is-secure:[optional] 1 for sftp or 2 for ftp
             """
     )
@@ -78,7 +78,7 @@ request = requestParams.RequestParams()
 request.connectionInfo = connectionInfo
 request.localPath = localPath
 request.remotePath = remotePath
-request.provider = provider
+request.prefix = provider
 request.pattern = pattern
 
 if secure == '1':

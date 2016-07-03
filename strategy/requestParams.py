@@ -4,5 +4,5 @@ class RequestParams:
         self.connectionInfo = ''
         self.localPath = ''
         self.remotePath = ''
-        self.provider = ''
+        self.prefix = ''
         self.pattern = ''
