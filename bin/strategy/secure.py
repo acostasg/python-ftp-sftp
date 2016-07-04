@@ -2,7 +2,7 @@ import pysftp
 import fnmatch
 import os
 
-def secure_upload(request,logging):
+def secure_upload(request, logging):
     sftp = pysftp.Connection(**request.connection_info)
 
     logging.info('Starting strategy secure...')

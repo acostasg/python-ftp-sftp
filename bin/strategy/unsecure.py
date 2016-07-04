@@ -2,7 +2,7 @@ import ftplib
 import fnmatch
 import os
 
-def unsecured_upload(request,logging):
+def unsecured_upload(request, logging):
 
     logging.warning('Starting strategy unsecured...')
 

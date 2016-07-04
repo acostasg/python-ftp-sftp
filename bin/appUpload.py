@@ -20,12 +20,14 @@ pattern = '*.csv'
 
 try:
     logging.basicConfig(filename='upload.log', level=logging.DEBUG)
+
+    # @TODO move to object config to cache lazzy for yml
     with open('/app.yml', 'r') as appConfig:
         docAppConfig = yaml.load(appConfig)
     with open('/connections.yml', 'r') as connectionsConfig:
         docConnectionsConfig = yaml.load(connectionsConfig)
 
-        #@TODO
+
 except getopt.GetoptError:
     logging.warning(
         """Corrupt configuration files or not is located in the configuration directory.\n

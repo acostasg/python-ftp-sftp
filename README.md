@@ -3,7 +3,7 @@ Basic script to upload file to sftp or ftp strategy
 
 Usage:
 
-        ./upload.py <options>
+        ./bin/cronUpload.py <options>
         Options:
             -h, --host: FTP hostname
             -p, --port: FTP username
@@ -19,8 +19,11 @@ Usage:
 * Create application appUpload.py containing the yml configuration:
         
         * app.yml [directories and other settings]
-        
         * connections.yml [external ftp and sftp settings]
         
 * Upload.py to cronUpload.py rename so that it can be used with parameters for planners systems (schedulers) such as jenks, cron,...
+* Unit Testing and Refactor with Dependency Injection Pattern 
+        
+        * Create unitary testing [https://docs.python.org/2.7/library/unittest.html]
+        * Dependency Injection Pattern [https://wiki.python.org/moin/DependencyInjectionPattern]
 ...
