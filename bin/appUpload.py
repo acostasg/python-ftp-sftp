@@ -1,73 +1,39 @@
 #!/usr/bin/env python
 
-import getopt
 import logging
+import os
 import sys
 import yaml
-import strategy.secure
-import strategy.unsecure
-from strategy import requestParams
-
-host = ''
-username = ''
-secret = ''
-localPath = ''
-remotePath = ''
-port = 0
-provider = ''
-secure = '1'
-pattern = '*.csv'
+import getopt
+from strategy \
+    import StrategyFactory
+from config \
+    import ConfigApp
 
 try:
-    logging.basicConfig(filename='upload.log', level=logging.DEBUG)
+    logging.basicConfig(filename='./../logs/upload.log', level=logging.DEBUG)
+    handleConfigApp = ConfigApp.Handle(os, yaml)
 
-    # @TODO move to object config to cache lazzy for yml
-    with open('/app.yml', 'r') as appConfig:
-        docAppConfig = yaml.load(appConfig)
-    with open('/connections.yml', 'r') as connectionsConfig:
-        docConnectionsConfig = yaml.load(connectionsConfig)
-
-
-except getopt.GetoptError:
+except Exception, e:
     logging.warning(
         """Corrupt configuration files or not is located in the configuration directory.\n
             /config/app.yml\n
             /config/connections.yml
-            """
+            """ + e.message
     )
     sys.exit(2)
 
-if not provider:
-    provider = username
+try:
+    strategyObject = StrategyFactory.Strategy(
+        handleConfigApp.get_strategy(),
+        logging
+    )
 
-logging.debug('Provider is ', provider)
-logging.debug('Host is ', host)
-logging.debug('Username is ', username)
-logging.debug('Local path is ', localPath)
-logging.debug('Remote path is ', remotePath)
-logging.debug('File extension is ', pattern)
-
-connectionInfo = {'host': host, 'username': username, 'password': secret, 'port': int(port)}
-
-request = requestParams.RequestParams()
-request.connectionInfo = connectionInfo
-request.localPath = localPath
-request.remotePath = remotePath
-request.prefix = provider
-request.pattern = pattern
-
-if secure == '1':
-    logging.debug('Strategy secure')
-    try:
-        strategy.secure.secure_upload(request, logging)
-    except Exception, e:
-        logging.error(e.message)
-        sys.exit(2)
-
-elif secure == '0':
-    logging.debug('Strategy unsecured')
-    try:
-        strategy.unsecure.unsecured_upload(request, logging)
-    except Exception, e:
-        logging.error(e.message)
-        sys.exit(2)
+    strategyObject.upload(
+        handleConfigApp.get_request(
+            handleConfigApp.get_strategy()
+        )
+    )
+except Exception, e:
+    logging.error(e)
+    sys.exit(2)

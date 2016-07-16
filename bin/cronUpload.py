@@ -4,9 +4,8 @@ import getopt
 import logging
 import sys
 
-import strategy.secure
-import strategy.unsecure
-from strategy import requestParams
+from strategy \
+    import StrategyFactory, RequestParams
 
 host = ''
 username = ''
@@ -74,25 +73,13 @@ logging.debug('File extension is ', pattern)
 
 connectionInfo = {'host': host, 'username': username, 'password': secret, 'port': int(port)}
 
-request = requestParams.RequestParams()
+request = RequestParams.RequestParams()
 request.connectionInfo = connectionInfo
 request.localPath = localPath
 request.remotePath = remotePath
 request.prefix = provider
 request.pattern = pattern
 
-if secure == '1':
-    logging.debug('Strategy secure')
-    try:
-        strategy.secure.secure_upload(request, logging)
-    except Exception, e:
-        logging.error(e.message)
-        sys.exit(2)
+strategyObject = StrategyFactory.Strategy(secure, logging)
+strategyObject.upload(request)
 
-elif secure == '0':
-    logging.debug('Strategy unsecured')
-    try:
-        strategy.unsecure.unsecured_upload(request, logging)
-    except Exception, e:
-        logging.error(e.message)
-        sys.exit(2)

@@ -14,7 +14,7 @@ Usage:
             -o, --prefix:[optional] Initial characters to files name
             -c, --is-secure:[optional] 1 for sftp or 2 for ftp
             
-##TODO
+##TODO in development branch
 
 * Create application appUpload.py containing the yml configuration:
         
@@ -26,4 +26,6 @@ Usage:
         
         * Create unitary testing [https://docs.python.org/2.7/library/unittest.html]
         * Dependency Injection Pattern [https://wiki.python.org/moin/DependencyInjectionPattern]
+            - Dependency container with  di-py [https://github.com/telefonicaid/di-py]
+            - Use factory to create strategy ng_factory [https://pypi.python.org/pypi/ng_factory/0.1.2]
 ...

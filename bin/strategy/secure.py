@@ -1,17 +1,26 @@
-import pysftp
-import fnmatch
-import os
+class Secure:
+    def __init__(self, logging):
+        self.logging = logging
+        pass
 
-def secure_upload(request, logging):
-    sftp = pysftp.Connection(**request.connection_info)
+    def upload(self, request):
+        """
 
-    logging.info('Starting strategy secure...')
+        :type request: RequestParams
+        """
+        import pysftp
+        import fnmatch
+        import os
 
-    for file in os.listdir(request.local_path):
-        if fnmatch.fnmatch(file, request.provider + request.pattern):
-            request.logging.info('Uploading file %s...' % file)
-            sftp.put(request.requestlocal_path + file, request.remote_path + '/' + file)
+        sftp = pysftp.Connection(**request.connectionInfo)
 
-    logging.info('Files has been successfully uploaded to %s' % (request.connection_info['host']))
+        self.logging.info('Starting strategy secure...')
 
-    sftp.close()
+        for file in os.listdir(request.local_path):
+            if fnmatch.fnmatch(file, request.provider + request.pattern):
+                request.logging.info('Uploading file %s...' % file)
+                sftp.put(request.requestlocal_path + file, request.remote_path + '/' + file)
+
+        self.logging.info('Files has been successfully uploaded to %s' % (request.connection_info['host']))
+
+        sftp.close()
