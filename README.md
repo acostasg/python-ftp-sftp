@@ -3,7 +3,7 @@ Basic script to upload file to sftp or ftp strategy
 
 Usage:
 
-        ./upload.py <options>
+        ./bin/cronUpload.py <options>
         Options:
             -h, --host: FTP hostname
             -p, --port: FTP username
@@ -11,16 +11,21 @@ Usage:
             -l, --local-path: Local path where files are
             -e, --files-extension:[optional] file extension default csv
             -r, --remote-path: Remote path where files will be uploaded
-            -o, --provider:[optional] Provider name
+            -o, --prefix:[optional] Initial characters to files name
             -c, --is-secure:[optional] 1 for sftp or 2 for ftp
             
-##TODO
+##TODO in development branch
 
 * Create application appUpload.py containing the yml configuration:
         
         * app.yml [directories and other settings]
-        
         * connections.yml [external ftp and sftp settings]
         
 * Upload.py to cronUpload.py rename so that it can be used with parameters for planners systems (schedulers) such as jenks, cron,...
+* Unit Testing and Refactor with Dependency Injection Pattern 
+        
+        * Create unitary testing [https://docs.python.org/2.7/library/unittest.html]
+        * Dependency Injection Pattern [https://wiki.python.org/moin/DependencyInjectionPattern]
+            - Dependency container with  di-py [https://github.com/telefonicaid/di-py]
+            - Use factory to create strategy ng_factory [https://pypi.python.org/pypi/ng_factory/0.1.2]
 ...
