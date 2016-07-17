@@ -1,7 +1,19 @@
 Basic script to upload file to sftp or ftp strategy
 ===================================================
 
-Usage:
+Usage App with config:
+
+        ./bin/appUpload.py
+        
+     Config:
+            - In config/app.yml
+                Configuration path local and remote, pattern and prefix from upload files in before local path, and default strategy (1 secure and 2 unsecured)
+  
+            - In config/connections.yml
+                Connections for secure (sftp) and unsecured (ftp) strategies:
+                Host, port, username and secret.        
+                        
+Usage Cron with params:        
 
         ./bin/cronUpload.py <options>
         Options:
@@ -13,8 +25,9 @@ Usage:
             -r, --remote-path: Remote path where files will be uploaded
             -o, --prefix:[optional] Initial characters to files name
             -c, --is-secure:[optional] 1 for sftp or 2 for ftp
+
             
-##TODO in development branch
+#Historic:
 
 * Create application appUpload.py containing the yml configuration:
         
@@ -26,6 +39,10 @@ Usage:
         
         * Create unitary testing [https://docs.python.org/2.7/library/unittest.html]
         * Dependency Injection Pattern [https://wiki.python.org/moin/DependencyInjectionPattern]
-            - Dependency container with  di-py [https://github.com/telefonicaid/di-py]
-            - Use factory to create strategy ng_factory [https://pypi.python.org/pypi/ng_factory/0.1.2]
+            - Dependency container with  container
+            - Use factory to create strategy
+            
+#TODO
+
+* 100% coverage and unitary test
 ...

@@ -1,0 +1,8 @@
+local:
+    path      : /local/origin/path
+    pattern   : "*.csv"
+    prefix    : report_
+remote:
+    path  : /remote/default/path
+strategy:
+    default: 1 #1 secure or 2 unsecure

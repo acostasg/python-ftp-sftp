@@ -1,0 +1,11 @@
+secure:
+    host: sftp.example.com
+    port: 421
+    username: example.com
+    secret: gf6233d67
+
+unsercure:
+    host: ftp.example.com
+    port: 21
+    username: example.com
+    secret: 234876uyg

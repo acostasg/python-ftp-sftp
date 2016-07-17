@@ -4,9 +4,8 @@ import getopt
 import logging
 import sys
 
-import strategy.secure
-import strategy.unsecure
-from strategy import requestParams
+from strategy \
+    import StrategyFactory, RequestParams
 
 host = ''
 username = ''
@@ -14,8 +13,8 @@ secret = ''
 localPath = ''
 remotePath = ''
 port = 0
-provider = ''
-secure = '1'
+prefix = ''
+secure = 1
 pattern = '*.csv'
 
 try:
@@ -24,11 +23,11 @@ try:
         ["host=", "port=", "username=", "secret=", "local-path=",
          "remote-path=", "provider=", "is-secure=", "files-extension"]
     )
-    logging.basicConfig(filename='upload.log', level=logging.DEBUG)
+    logging.basicConfig(filename='./../logs/cronUpload.log', level=logging.DEBUG)
 except getopt.GetoptError:
-    logging.warning(
+    print (
         """Usage:\n
-        ./upload.py <options>\n
+        ./cronUpload.py <options>\n
         Options:
             -h, --host: FTP hostname
             -p, --port: FTP username
@@ -36,7 +35,7 @@ except getopt.GetoptError:
             -l, --local-path: Local path where files are
             -e, --files-extension:[optional] file extension default csv
             -r, --remote-path: Remote path where files will be uploaded
-            -o, --provider:[optional] Provider name
+            -o, --prefix:[optional] Initial characters to files name
             -c, --is-secure:[optional] 1 for sftp or 2 for ftp
             """
     )
@@ -55,44 +54,22 @@ for opt, arg in opts:
         localPath = arg
     elif opt in ('-r', '--remote-path'):
         remotePath = arg
-    elif opt in ('-o', '--provider'):
-        provider = arg
+    elif opt in ('-o', '--prefix'):
+        prefix = arg
     elif opt in ('-c', '--is-secure'):
         secure = arg
     elif opt in ('-e', '--files-extension'):
         pattern = '*.' + arg
 
-if not provider:
-    provider = username
-
-logging.debug('Provider is ', provider)
-logging.debug('Host is ', host)
-logging.debug('Username is ', username)
-logging.debug('Local path is ', localPath)
-logging.debug('Remote path is ', remotePath)
-logging.debug('File extension is ', pattern)
-
 connectionInfo = {'host': host, 'username': username, 'password': secret, 'port': int(port)}
 
-request = requestParams.RequestParams()
+request = RequestParams.RequestParams()
 request.connectionInfo = connectionInfo
 request.localPath = localPath
 request.remotePath = remotePath
-request.provider = provider
+request.prefix = prefix
 request.pattern = pattern
 
-if secure == '1':
-    logging.debug('Strategy secure')
-    try:
-        strategy.secure.secure_upload(request, logging)
-    except Exception, e:
-        logging.error(e.message)
-        sys.exit(2)
+strategyObject = StrategyFactory.Strategy(int(secure), logging)
+strategyObject.upload(request)
 
-elif secure == '0':
-    logging.debug('Strategy unsecured')
-    try:
-        strategy.unsecure.unsecured_upload(request, logging)
-    except Exception, e:
-        logging.error(e.message)
-        sys.exit(2)
