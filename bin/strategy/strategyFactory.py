@@ -22,6 +22,6 @@ class Strategy:
         """
 
         :param request:
-        :return: void
+        :return: boolean
         """
-        self.__strategyClass.upload(request)
+        return self.__strategyClass.upload(request)

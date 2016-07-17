@@ -22,16 +22,16 @@ class Handle:
                                             'port': int(connections['unsercure']['port'])
                                             }
 
-        with open(script_dir + '/../../config/app.yml', 'r') as appConfig:
-            appConfig = yaml.load(appConfig)
+        with open(script_dir + '/../../config/app.yml', 'r') as app_config:
+            app_config = yaml.load(app_config)
             self.request = strategy.RequestParams
             self.request.connectionInfo = self.connectionInfoSecure
-            self.request.localPath = appConfig['local']['path']
-            self.request.remotePath = appConfig['remote']['path']
-            self.request.prefix = appConfig['local']['prefix']
-            self.request.pattern = appConfig['local']['pattern']
+            self.request.localPath = app_config['local']['path']
+            self.request.remotePath = app_config['remote']['path']
+            self.request.prefix = app_config['local']['prefix']
+            self.request.pattern = app_config['local']['pattern']
 
-            self.defaultStrategy = int(appConfig['strategy']['default'])
+            self.defaultStrategy = int(app_config['strategy']['default'])
 
     pass
 

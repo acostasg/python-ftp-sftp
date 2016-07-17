@@ -9,7 +9,8 @@ class Secure:
     def upload(self, request):
         """
 
-        :type request: RequestParams
+        :param request:
+        :return: boolean
         """
         ftp_module = Container.dependency('pysftp')
         fnmatch_module = Container.dependency('fnmatch')
@@ -27,3 +28,5 @@ class Secure:
         self.logging.info('Files has been successfully uploaded to %s' % (request.connection_info['host']))
 
         sftp.close()
+
+        return True

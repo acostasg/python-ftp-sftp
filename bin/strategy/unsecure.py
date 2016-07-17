@@ -9,7 +9,8 @@ class Unsecure:
     def upload(self, request):
         """
 
-        :type request: RequestParams
+        :param request:
+        :return: boolean
         """
         ftp = Container.dependency('ftplib.ftp')
         fnmatch_module = Container.dependency('fnmatch')
@@ -29,3 +30,4 @@ class Unsecure:
         self.logging.info('Files has been successfully uploaded to %s' % (request.connectionInfo['host']))
 
         ftp.quit()
+        return True
