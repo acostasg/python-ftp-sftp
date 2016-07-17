@@ -1,3 +1,6 @@
+from injectionContainer import Container
+
+
 class Secure:
     def __init__(self, logging):
         self.logging = logging
@@ -8,16 +11,16 @@ class Secure:
 
         :type request: RequestParams
         """
-        import pysftp
-        import fnmatch
-        import os
+        ftp_module = Container.dependency('pysftp')
+        fnmatch_module = Container.dependency('fnmatch')
+        os_module = Container.dependency('os')
 
-        sftp = pysftp.Connection(**request.connectionInfo)
+        sftp = ftp_module.Connection(**request.connectionInfo)
 
         self.logging.info('Starting strategy secure...')
 
-        for file in os.listdir(request.local_path):
-            if fnmatch.fnmatch(file, request.provider + request.pattern):
+        for file in os_module.listdir(request.local_path):
+            if fnmatch_module.fnmatch(file, request.provider + request.pattern):
                 request.logging.info('Uploading file %s...' % file)
                 sftp.put(request.requestlocal_path + file, request.remote_path + '/' + file)
 

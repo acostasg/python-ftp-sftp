@@ -20,12 +20,13 @@ Usage:
         
         * app.yml [directories and other settings]
         * connections.yml [external ftp and sftp settings]
+        * Use object ConfigApp inmutable
         
 * Upload.py to cronUpload.py rename so that it can be used with parameters for planners systems (schedulers) such as jenks, cron,...
 * Unit Testing and Refactor with Dependency Injection Pattern 
         
         * Create unitary testing [https://docs.python.org/2.7/library/unittest.html]
         * Dependency Injection Pattern [https://wiki.python.org/moin/DependencyInjectionPattern]
-            - Dependency container with  di-py [https://github.com/telefonicaid/di-py]
-            - Use factory to create strategy ng_factory [https://pypi.python.org/pypi/ng_factory/0.1.2]
+            - Dependency container with  container
+            - Use factory to create strategy
 ...

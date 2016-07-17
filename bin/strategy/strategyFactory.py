@@ -1,7 +1,7 @@
 class Strategy:
 
     CONST_SECURE = 1
-    CONST_UNSECURE = 0
+    CONST_UNSECURE = 2
 
     def __init__(self, type, logging):
         """

@@ -55,7 +55,7 @@ class Handle:
         elif type == strategy.StrategyFactory.Strategy.CONST_UNSECURE:
             return self.connectionInfoUnsercure
         else:
-            return self.get_connections(self.get_strategy())
+            raise Exception('Unknown strategy')
 
     def get_strategy(self):
         """

@@ -72,7 +72,7 @@ setup(
     # your project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=['di-py', 'ng-factory', 'yaml', 'pysftp', 'ftplib', 'fnmatch', 'os', 'logging', 'getopt', 'sys'],
+    install_requires=['yaml', 'pysftp', 'ftplib', 'fnmatch', 'os', 'logging', 'getopt', 'sys'],
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
@@ -80,6 +80,6 @@ setup(
     # $ pip install -e .[dev,test]
     extras_require={
         'dev': ['check-manifest'],
-        'test': ['coverage'],
+        'test': ['coverage', 'magicmock'],
     }
 )

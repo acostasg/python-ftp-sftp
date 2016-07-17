@@ -13,8 +13,8 @@ secret = ''
 localPath = ''
 remotePath = ''
 port = 0
-provider = ''
-secure = '1'
+prefix = ''
+secure = 1
 pattern = '*.csv'
 
 try:
@@ -23,9 +23,9 @@ try:
         ["host=", "port=", "username=", "secret=", "local-path=",
          "remote-path=", "provider=", "is-secure=", "files-extension"]
     )
-    logging.basicConfig(filename='upload.log', level=logging.DEBUG)
+    logging.basicConfig(filename='./../logs/cronUpload.log', level=logging.DEBUG)
 except getopt.GetoptError:
-    logging.warning(
+    print (
         """Usage:\n
         ./cronUpload.py <options>\n
         Options:
@@ -54,22 +54,12 @@ for opt, arg in opts:
         localPath = arg
     elif opt in ('-r', '--remote-path'):
         remotePath = arg
-    elif opt in ('-o', '--provider'):
-        provider = arg
+    elif opt in ('-o', '--prefix'):
+        prefix = arg
     elif opt in ('-c', '--is-secure'):
         secure = arg
     elif opt in ('-e', '--files-extension'):
         pattern = '*.' + arg
-
-if not provider:
-    provider = username
-
-logging.debug('Provider is ', provider)
-logging.debug('Host is ', host)
-logging.debug('Username is ', username)
-logging.debug('Local path is ', localPath)
-logging.debug('Remote path is ', remotePath)
-logging.debug('File extension is ', pattern)
 
 connectionInfo = {'host': host, 'username': username, 'password': secret, 'port': int(port)}
 
@@ -77,9 +67,9 @@ request = RequestParams.RequestParams()
 request.connectionInfo = connectionInfo
 request.localPath = localPath
 request.remotePath = remotePath
-request.prefix = provider
+request.prefix = prefix
 request.pattern = pattern
 
-strategyObject = StrategyFactory.Strategy(secure, logging)
+strategyObject = StrategyFactory.Strategy(int(secure), logging)
 strategyObject.upload(request)
 
