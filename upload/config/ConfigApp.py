@@ -6,7 +6,7 @@ class Handle:
         :param yaml:
         :return:
         """
-        import strategy.RequestParams
+        import strategy.requestParams
 
         script_dir = os.path.dirname(__file__)
         with open(script_dir + '/../../config/connections.yml', 'r') as connectionsConfig:
@@ -24,7 +24,7 @@ class Handle:
 
         with open(script_dir + '/../../config/app.yml', 'r') as app_config:
             app_config = yaml.load(app_config)
-            self.request = strategy.RequestParams
+            self.request = strategy.requestParams.RequestParams()
             self.request.connectionInfo = self.connectionInfoSecure
             self.request.localPath = app_config['local']['path']
             self.request.remotePath = app_config['remote']['path']
@@ -40,8 +40,8 @@ class Handle:
         :param type: int
         :return: RequestParams
         """
-        self.request.RequestParams.connectionInfo = self.get_connections(type)
-        return self.request.RequestParams
+        self.request.connectionInfo = self.get_connections(type)
+        return self.request
 
     def get_connections(self, type):
         """
@@ -49,10 +49,10 @@ class Handle:
         :param type: int
         :return: dict
         """
-        import strategy.StrategyFactory
-        if type == strategy.StrategyFactory.Strategy.CONST_SECURE:
+        import strategy.strategyFactory
+        if type == strategy.strategyFactory.Strategy.CONST_SECURE:
             return self.connectionInfoSecure
-        elif type == strategy.StrategyFactory.Strategy.CONST_UNSECURE:
+        elif type == strategy.strategyFactory.Strategy.CONST_UNSECURE:
             return self.connectionInfoUnsercure
         else:
             raise Exception('Unknown strategy')

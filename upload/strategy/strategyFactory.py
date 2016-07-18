@@ -11,12 +11,12 @@ class Strategy:
         :return: void
         """
         from strategy \
-            import Secure as StrSecure, Unsecure as StrUnsecure
+            import secure as str_secure, unsecure as str_unsecure
 
         if type == Strategy.CONST_UNSECURE:
-            self.__strategyClass = StrUnsecure.Unsecure(logging)
+            self.__strategyClass = str_unsecure.Unsecure(logging)
         if type == Strategy.CONST_SECURE:
-            self.__strategyClass = StrSecure.Secure(logging)
+            self.__strategyClass = str_secure.Secure(logging)
 
     def upload(self, request):
         """

@@ -5,7 +5,7 @@ import logging
 import sys
 
 from strategy \
-    import StrategyFactory, RequestParams
+    import strategyFactory, requestParams
 
 host = ''
 username = ''
@@ -23,7 +23,7 @@ try:
         ["host=", "port=", "username=", "secret=", "local-path=",
          "remote-path=", "provider=", "is-secure=", "files-extension"]
     )
-    logging.basicConfig(filename='./../logs/cronUpload.log', level=logging.DEBUG)
+    logging.basicConfig(filename='./logs/cronUpload.log', level=logging.DEBUG)
 except getopt.GetoptError:
     print (
         """Usage:\n
@@ -63,13 +63,13 @@ for opt, arg in opts:
 
 connectionInfo = {'host': host, 'username': username, 'password': secret, 'port': int(port)}
 
-request = RequestParams.RequestParams()
+request = requestParams.RequestParams()
 request.connectionInfo = connectionInfo
 request.localPath = localPath
 request.remotePath = remotePath
 request.prefix = prefix
 request.pattern = pattern
 
-strategyObject = StrategyFactory.Strategy(int(secure), logging)
+strategyObject = strategyFactory.Strategy(int(secure), logging)
 strategyObject.upload(request)
 

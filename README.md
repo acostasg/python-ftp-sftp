@@ -3,7 +3,7 @@ Basic script to upload file to sftp or ftp strategy
 
 Usage App with config:
 
-        ./bin/appUpload.py
+        ./upload/appUpload.py
         
      Config:
             - In config/app.yml
@@ -15,7 +15,7 @@ Usage App with config:
                         
 Usage Cron with params:        
 
-        ./bin/cronUpload.py <options>
+        ./upload/cronUpload.py <options>
         Options:
             -h, --host: FTP hostname
             -p, --port: FTP username

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from injectionContainer import Container
-from strategy import StrategyFactory
+from strategy import strategyFactory
 
 def execute(log, config_app, system, os, yaml):
     log.basicConfig(filename='./../logs/appUpload.log', level=log.DEBUG)
@@ -17,7 +17,7 @@ def execute(log, config_app, system, os, yaml):
         system.exit(2)
 
     try:
-        strategy = StrategyFactory.Strategy(
+        strategy = strategyFactory.Strategy(
             handle_config_app.get_strategy(),
             log
         )
