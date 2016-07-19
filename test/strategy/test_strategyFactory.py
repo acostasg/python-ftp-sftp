@@ -2,7 +2,7 @@ import unittest
 
 from unittest.mock \
     import patch
-import strategy.RequestParams as Request
+import strategy.requestParams as Request
 import injectionContainer
 from injectionContainerDummy \
     import ContainerMock as ContainerMock
@@ -11,7 +11,7 @@ from injectionContainerDummy \
 class TestSecure(unittest.TestCase):
     @patch('logging')
     def test_secure_upload(self, mock_logging):
-        import strategy.StrategyFactory as Factory
+        import strategy.strategyFactory as Factory
 
         request = Request.RequestParams()
 

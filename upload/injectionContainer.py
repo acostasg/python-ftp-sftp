@@ -7,9 +7,11 @@ import sys
 import logging
 from config \
     import ConfigApp
-
+from shared import SingletonMetaClass as Singleton
 
 class Container:
+    __metaclass__ = Singleton.SingletonMetaClass
+
     def __init__(self):
         pass
 
