@@ -1,4 +1,8 @@
+from shared import SingletonMetaClass as Singleton
+
 class Handle:
+    __metaclass__ = Singleton.SingletonMetaClass
+
     def __init__(self, os, yaml):
         """
 
