@@ -39,7 +39,7 @@ Usage Cron with params:
         
         * Create unitary testing [https://docs.python.org/2.7/library/unittest.html]
         * Dependency Injection Pattern [https://wiki.python.org/moin/DependencyInjectionPattern]
-            - Dependency container with  container
+            - Dependency Injection with container
             - Use factory to create strategy
             
 #TODO
