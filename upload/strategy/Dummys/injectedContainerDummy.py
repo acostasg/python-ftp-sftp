@@ -1,17 +1,15 @@
-import unittest
 from unittest.mock \
     import patch
 
 
 @patch(
-    'ftplib.FTP()',
+    'ftplib',
     'pysftp',
     'fnmatch',
     'os',
     'yaml',
     'sys',
-    'ConfigApp',
-    'logging'
+    'ConfigApp'
 )
 class ContainerMock:
     def __init__(

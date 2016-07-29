@@ -1,11 +1,9 @@
 import unittest
 
-from unittest.mock \
-    import patch
+from mock import patch
 import strategy.requestParams as Request
 import injectionContainer
-from injectionContainerDummy \
-    import ContainerMock as ContainerMock
+from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestSecure(unittest.TestCase):

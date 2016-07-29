@@ -23,7 +23,7 @@ try:
         ["host=", "port=", "username=", "secret=", "local-path=",
          "remote-path=", "provider=", "is-secure=", "files-extension"]
     )
-    logging.basicConfig(filename='./logs/cronUpload.log', level=logging.DEBUG)
+    logging.basicConfig(filename='./../logs/cronUpload.log', level=logging.DEBUG)
 except getopt.GetoptError:
     print (
         """Usage:\n
