@@ -1,46 +1,61 @@
 from unittest.mock \
     import patch
+from unittest.mock \
+    import MagicMock
+import ftplib
+import pysftp
+import fnmatch
+import os
+import yaml
+import sys
+from config \
+    import ConfigApp as configApp
+import logging
 
-
-@patch(
-    'ftplib',
-    'pysftp',
-    'fnmatch',
-    'os',
-    'yaml',
-    'sys',
-    'ConfigApp'
-)
 class ContainerMock:
     def __init__(
-            self,
-            ftp_mock,
-            pysftp_mock,
-            fnmatch_mock,
-            os_mock,
-            yaml_mock,
-            sys_mock,
-            config_app,
-            logger
+            self
     ):
-        self.ftp_mock = ftp_mock
-        self.pysftp_mock = pysftp_mock
-        self.fnmatch_mock = fnmatch_mock
-        self.os_mock = os_mock
-        self.yaml_mock = yaml_mock
-        self.sys_mock = sys_mock
-        self.config_mock = config_app
-        self.logger_mock = logger
+        ftp_mock = ftplib
+        ftp_mock.connect = MagicMock(return_value=0)
+        ftp_mock.login = MagicMock(return_value=0)
+        ftp_mock.cwd = MagicMock(return_value=0)
+        ftp_mock.storlines = MagicMock(return_value=0)
+        ftp_mock.quit = MagicMock(return_value=0)
+        ftp_mock.close = MagicMock(return_value=0)
+
+
+        pysftp_mock = pysftp
+        pysftp_mock.Connection = MagicMock(return_value=ftp_mock)
+
+        fnmatch_mock = fnmatch
+        fnmatch_mock.fnmatch = MagicMock(return_value=0)
+
+        os_mock = os
+        os_mock.listdir = MagicMock(return_value={})
+
+        yaml_mock = yaml
+        yaml_mock.load = MagicMock(return_value=0)
+
+        sys_mock = sys
+        sys_mock.warn = MagicMock(return_value=0)
+
+        config_mock = configApp
+        config_mock.warn = MagicMock(return_value=0)
+
+        logger_mock = logging
+        logger_mock.warning = MagicMock(return_value=0)
+        logger_mock.info = MagicMock(return_value=0)
 
         self.__container = {
-            'ftplib.ftp': self.ftp_mock,
-            'pysftp': self.pysftp_mock,
-            'fnmatch': self.fnmatch_mock,
-            'os': self.os_mock,
-            'yaml': self.yaml_mock,
-            'sys': self.sys_mock,
-            'config_app': self.config_mock,
-            'logger': self.logger_mock
+            'ftplib.ftp': ftp_mock,
+            'pysftp': pysftp_mock,
+            'fnmatch': fnmatch_mock,
+            'os': os_mock,
+            'yaml': yaml_mock,
+            'sys': sys_mock,
+            'config_app': config_mock,
+            'logger': logger_mock
         }
         pass
 

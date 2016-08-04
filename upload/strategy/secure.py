@@ -20,12 +20,12 @@ class Secure:
 
         self.logging.info('Starting strategy secure...')
 
-        for file in os_module.listdir(request.local_path):
+        for file in os_module.listdir(request.localPath):
             if fnmatch_module.fnmatch(file, request.provider + request.pattern):
                 request.logging.info('Uploading file %s...' % file)
                 sftp.put(request.requestlocal_path + file, request.remote_path + '/' + file)
 
-        self.logging.info('Files has been successfully uploaded to %s' % (request.connection_info['host']))
+        self.logging.info('Files has been successfully uploaded to %s' % (request.connectionInfo['host']))
 
         sftp.close()
 

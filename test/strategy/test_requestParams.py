@@ -1,10 +1,10 @@
 import unittest
-import strategy.RequestParams as Request
+import strategy.requestParams as Request
 
 
 class TestRequestParams(unittest.TestCase):
 
-    def test_secure_upload(self):
+    def test_request_params(self):
         request_params = Request.RequestParams()
         request_params.connectionInfo = {'test': 'test'}
         request_params.localPath = 'localPath'

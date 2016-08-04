@@ -1,5 +1,6 @@
 from shared import SingletonMetaClass as Singleton
 
+
 class Handle:
     __metaclass__ = Singleton.SingletonMetaClass
 
