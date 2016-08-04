@@ -5,8 +5,7 @@ import pysftp
 import yaml
 import sys
 import logging
-from config \
-    import ConfigApp
+import config.ConfigApp as ConfigApp
 from shared import SingletonMetaClass as Singleton
 
 class Container:

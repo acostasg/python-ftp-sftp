@@ -7,12 +7,12 @@ def execute(log, config_app, system, os, yaml):
 
     try:
         handle_config_app = config_app.Handle(os, yaml)
-    except Exception, e:
+    except Exception as e:
         log.warning(
             """Corrupt configuration files or not is located in the configuration directory.\n
                 /config/app.yml\n
                 /config/connections.yml
-                """ + e.message
+                """ + e
         )
         system.exit(2)
 
@@ -27,7 +27,7 @@ def execute(log, config_app, system, os, yaml):
                 handle_config_app.get_strategy()
             )
         )
-    except Exception, e:
+    except Exception as e:
         log.error(e)
         system.exit(2)
 

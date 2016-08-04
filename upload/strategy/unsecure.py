@@ -20,9 +20,9 @@ class Unsecure:
 
         ftp.connect(request.connectionInfo['host'], request.connectionInfo['port'])
         ftp.login(request.connectionInfo['username'], request.connectionInfo['password'])
-        ftp.cwd(request.remote_path)
+        ftp.cwd(request.remotePath)
 
-        for file in os_module.listdir(request.local_path):
+        for file in os_module.listdir(request.localPath):
             if fnmatch_module.fnmatch(file, request.provider + request.pattern):
                 self.logging.info('Uploading file %s...' % file)
                 ftp.storlines('STOR %s' % file, open('%s%s' % (request.local_path, file), 'r'))

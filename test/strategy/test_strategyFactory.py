@@ -1,25 +1,29 @@
 import unittest
 
-from unittest.mock \
-    import patch
-import strategy.requestParams as Request
 import injectionContainer
-from injectionContainerDummy \
-    import ContainerMock as ContainerMock
+import strategy.requestParams as Request
+import logging
+from unittest.mock import MagicMock
+from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestSecure(unittest.TestCase):
-    @patch('logging')
-    def test_secure_upload(self, mock_logging):
+
+    def test_strategy_factory(self):
         import strategy.strategyFactory as Factory
 
+        logger_mock = logging
+        logger_mock.warning = MagicMock(return_value=0)
+        logger_mock.info = MagicMock(return_value=0)
+
         request = Request.RequestParams()
+        request.connectionInfo = {'host': ''}
 
         injectionContainer.Container.update(
-            ContainerMock().contxainer()
+            ContainerMock().container()
         )
 
-        strategy = Factory.Strategy(1, mock_logging)
+        strategy = Factory.Strategy(1, logger_mock)
         self.assertTrue(strategy.upload(request))
 
 

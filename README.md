@@ -11,7 +11,9 @@ Usage App with config:
   
             - In config/connections.yml
                 Connections for secure (sftp) and unsecured (ftp) strategies:
-                Host, port, username and secret.        
+                Host, port, username and secret.       
+                 
+Remember for secure sftp create in your system: ssh-keygen -R sftp.example.com
                         
 Usage Cron with params:        
 
