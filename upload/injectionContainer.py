@@ -8,25 +8,12 @@ import pysftp
 import yaml
 
 import config.ConfigApp as ConfigApp
-from shared import SingletonMetaClass as Singleton
+from shared.Singleton import SingleMetaClass
 
 
-class Container:
-    __metaclass__ = Singleton.SingletonMetaClass
-
-    def __init__(self):
-        pass
-
-    __container = {
-        'ftplib.ftp': ftplib.FTP(),
-        'pysftp': pysftp,
-        'fnmatch': fnmatch,
-        'os': os,
-        'yaml': yaml,
-        'sys': sys,
-        'config_app': ConfigApp,
-        'logger': logging
-    }
+class Container(metaclass=SingleMetaClass):
+    __container = {'ftplib.ftp': ftplib.FTP(), 'pysftp': pysftp, 'fnmatch': fnmatch, 'os': os, 'yaml': yaml, 'sys': sys,
+                   'config_app': ConfigApp, 'logger': logging}
 
     @staticmethod
     def dependency(key):
@@ -35,3 +22,7 @@ class Container:
     @staticmethod
     def update(container):
         return Container.__container.update(container)
+
+    @staticmethod
+    def get_container():
+        return Container.__container

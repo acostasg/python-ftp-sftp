@@ -7,10 +7,4 @@ class RequestParams:
         self.pattern = ''
 
     def __str__(self):
-        return {
-            'connectionInfo:' + self.connectionInfo,
-            'localPath:' + self.localPath,
-            'remotePath' + self.remotePath,
-            'prefix:' + self.prefix,
-            'pattern:' + self.pattern
-        }
+        return '{"' + 'connectionInfo":' + str(self.connectionInfo) + ',"' + 'localPath":"' + self.localPath + '","' + 'remotePath":"' + self.remotePath + '","' + 'prefix":"' + self.prefix + '","' + 'pattern":"' + self.pattern + '"}'

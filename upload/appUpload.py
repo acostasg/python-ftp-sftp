@@ -3,24 +3,24 @@ from injectionContainer import Container
 from strategy import strategyFactory
 
 
-def execute(log, config_app, system, os, yaml):
-    log.basicConfig(filename='./../logs/appUpload.log', level=log.DEBUG)
+def execute(logger, config_app, system, os, yaml):
+    logger.basicConfig(filename='./../logs/appUpload.log', level=logger.DEBUG)
 
     try:
         handle_config_app = config_app.Handle(os, yaml)
     except Exception as e:
-        log.warning(
+        logger.warning(
             """Corrupt configuration files or not is located in the configuration directory.\n
                 /config/app.yml\n
                 /config/connections.yml
-                """ + e
+                """ + str(e)
         )
         system.exit(2)
 
     try:
         strategy = strategyFactory.Strategy(
             handle_config_app.get_strategy(),
-            log
+            logger
         )
 
         strategy.upload(
@@ -29,9 +29,8 @@ def execute(log, config_app, system, os, yaml):
             )
         )
     except Exception as e:
-        log.error(e)
+        logger.error(e)
         system.exit(2)
-
 
 execute(
     Container.dependency('logger'),

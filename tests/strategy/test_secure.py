@@ -7,10 +7,10 @@ import strategy.requestParams as Request
 from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
-class TestUnsecure(unittest.TestCase):
-    def test_unsecured_upload(self):
+class TestSecure(unittest.TestCase):
+    def test_secure_upload(self):
         from strategy \
-            import unsecure as str_unsecure
+            import secure as str_secure
 
         logger_mock = logging
         logger_mock.warning = MagicMock(return_value=0)
@@ -23,9 +23,5 @@ class TestUnsecure(unittest.TestCase):
             ContainerMock().container()
         )
 
-        unsecure = str_unsecure.Unsecure(logging)
+        unsecure = str_secure.Secure(logging)
         self.assertTrue(unsecure.upload(request))
-
-
-if __name__ == '__main__':
-    unittest.main()

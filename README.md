@@ -43,8 +43,7 @@ Usage Cron with params:
         * Dependency Injection Pattern [https://wiki.python.org/moin/DependencyInjectionPattern]
             - Dependency Injection with container
             - Use factory to create strategy
-            
-#TODO
 
-* 100% coverage and unitary test
-...
+* Coverage unittest
+    * /test 100% files, 100% lines
+    * /upload 100% files, 87% lines

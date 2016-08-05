@@ -15,6 +15,7 @@ class Unsecure:
         ftp = Container.dependency('ftplib.ftp')
         fnmatch_module = Container.dependency('fnmatch')
         os_module = Container.dependency('os')
+        open_module = Container.dependency('open')
 
         self.logging.warning('Starting strategy unsecured...')
 
@@ -23,9 +24,9 @@ class Unsecure:
         ftp.cwd(request.remotePath)
 
         for file in os_module.listdir(request.localPath):
-            if fnmatch_module.fnmatch(file, request.provider + request.pattern):
+            if fnmatch_module.fnmatch(file, request.prefix + request.pattern):
                 self.logging.info('Uploading file %s...' % file)
-                ftp.storlines('STOR %s' % file, open('%s%s' % (request.local_path, file), 'r'))
+                ftp.storlines('STOR %s' % file, open_module('%s%s' % (request.localPath, file), 'r'))
 
         self.logging.info('Files has been successfully uploaded to %s' % (request.connectionInfo['host']))
 

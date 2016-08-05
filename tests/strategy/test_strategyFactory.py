@@ -16,7 +16,7 @@ class TestSecure(unittest.TestCase):
         logger_mock.info = MagicMock(return_value=0)
 
         request = Request.RequestParams()
-        request.connectionInfo = {'host': ''}
+        request.connectionInfo = {'host': '', 'port': '', 'username': '', 'password': ''}
 
         injectionContainer.Container.update(
             ContainerMock().container()
@@ -25,6 +25,5 @@ class TestSecure(unittest.TestCase):
         strategy = Factory.Strategy(1, logger_mock)
         self.assertTrue(strategy.upload(request))
 
-
-if __name__ == '__main__':
-    unittest.main()
+        strategy = Factory.Strategy(2, logger_mock)
+        self.assertTrue(strategy.upload(request))

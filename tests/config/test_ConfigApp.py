@@ -10,7 +10,6 @@ from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestSecure(unittest.TestCase):
-    # TODO
     def test_configApp(self):
         import strategy.strategyFactory
 
@@ -35,6 +34,10 @@ class TestSecure(unittest.TestCase):
         config_sercure = config_app.get_request(strategy.strategyFactory.Strategy.CONST_SECURE)
         self.addTypeEqualityFunc('requestParams', config_sercure)
 
+        config_sercure = config_app.get_strategy()
+        self.assertEqual(config_sercure, strategy.strategyFactory.Strategy.CONST_SECURE)
 
-if __name__ == '__main__':
-    unittest.main()
+        self.assertRaises(Exception, config_app.get_request)
+
+        with self.assertRaises(Exception):
+            config_app.get_request(999)
