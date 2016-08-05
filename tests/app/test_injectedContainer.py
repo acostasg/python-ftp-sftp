@@ -4,7 +4,7 @@ import injectionContainer
 from upload.strategy.dummys.injectedContainerDummy import ContainerMock
 
 
-class TestRequestParams(unittest.TestCase):
+class TestInjectedContainer(unittest.TestCase):
     def test_injection_container(self):
 
         injectionContainer.Container.update(

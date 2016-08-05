@@ -7,7 +7,7 @@ import strategy.requestParams as Request
 from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
-class TestSecure(unittest.TestCase):
+class TestStrategyFactory(unittest.TestCase):
     def test_strategy_factory(self):
         import strategy.strategyFactory as Factory
 
