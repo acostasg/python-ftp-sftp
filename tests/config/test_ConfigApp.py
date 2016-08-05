@@ -9,7 +9,7 @@ import injectionContainer
 from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
-class TestSecure(unittest.TestCase):
+class TestConfigApp(unittest.TestCase):
     def test_configApp(self):
         import strategy.strategyFactory
 

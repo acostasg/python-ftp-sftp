@@ -1,13 +1,11 @@
 import unittest
 
 import injectionContainer
-
 from upload.strategy.dummys.injectedContainerDummy import ContainerMock
 
 
-class TestUnsecure(unittest.TestCase):
-    def test_appUpload(self):
-
+class TestAppUpload(unittest.TestCase):
+    def test_app_upload(self):
         injectionContainer.Container.update(
             ContainerMock().container()
         )
