@@ -38,7 +38,7 @@ class ContainerMock(metaclass=SingleMetaClass):
         fnmatch_mock.fnmatch = MagicMock(return_value=True)
 
         os_mock = os
-        os_mock.listdir = MagicMock(return_value={'test'})
+        os_mock.listdir = MagicMock(return_value={'tests'})
 
         yaml_mock = yaml
         yaml_mock.load = MagicMock(return_value={
@@ -60,7 +60,7 @@ class ContainerMock(metaclass=SingleMetaClass):
         logger_mock.info = MagicMock(return_value=0)
         logger_mock.basicConfig = MagicMock(return_value=0)
 
-        open_mock = MagicMock(return_value='test')
+        open_mock = MagicMock(return_value='tests')
 
         self.__container = {
             'ftplib.ftp': ftp_mock,
