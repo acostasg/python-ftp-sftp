@@ -27,7 +27,3 @@ class TestSecure(unittest.TestCase):
 
         strategy = Factory.Strategy(2, logger_mock)
         self.assertTrue(strategy.upload(request))
-
-
-if __name__ == '__main__':
-    unittest.main()

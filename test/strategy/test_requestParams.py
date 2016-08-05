@@ -23,7 +23,3 @@ class TestRequestParams(unittest.TestCase):
         self.assertEqual(
             '{"connectionInfo":{\'test\': \'test\'},"localPath":"localPath","remotePath":"remotePath","prefix":"test_report","pattern":"*.pattern"}',
             str_request)
-
-
-if __name__ == '__main__':
-    unittest.main()

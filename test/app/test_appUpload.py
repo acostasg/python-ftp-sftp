@@ -2,7 +2,7 @@ import unittest
 
 import injectionContainer
 
-from strategy.dummys.injectedContainerDummy import ContainerMock
+from upload.strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestUnsecure(unittest.TestCase):
@@ -21,7 +21,3 @@ class TestUnsecure(unittest.TestCase):
             injectionContainer.Container.dependency('os'),
             injectionContainer.Container.dependency('yaml')
         )
-
-
-if __name__ == '__main__':
-    unittest.main()

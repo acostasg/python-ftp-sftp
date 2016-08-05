@@ -12,18 +12,8 @@ from shared.Singleton import SingleMetaClass
 
 
 class Container(metaclass=SingleMetaClass):
-    pass
-
-    __container = {
-        'ftplib.ftp': ftplib.FTP(),
-        'pysftp': pysftp,
-        'fnmatch': fnmatch,
-        'os': os,
-        'yaml': yaml,
-        'sys': sys,
-        'config_app': ConfigApp,
-        'logger': logging
-    }
+    __container = {'ftplib.ftp': ftplib.FTP(), 'pysftp': pysftp, 'fnmatch': fnmatch, 'os': os, 'yaml': yaml, 'sys': sys,
+                   'config_app': ConfigApp, 'logger': logging}
 
     @staticmethod
     def dependency(key):
@@ -32,3 +22,7 @@ class Container(metaclass=SingleMetaClass):
     @staticmethod
     def update(container):
         return Container.__container.update(container)
+
+    @staticmethod
+    def get_container():
+        return Container.__container
