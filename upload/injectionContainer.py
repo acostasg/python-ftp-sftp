@@ -8,14 +8,11 @@ import pysftp
 import yaml
 
 import config.ConfigApp as ConfigApp
-from shared import SingletonMetaClass as Singleton
+from shared.Singleton import SingleMetaClass
 
 
-class Container:
-    __metaclass__ = Singleton.SingletonMetaClass
-
-    def __init__(self):
-        pass
+class Container(metaclass=SingleMetaClass):
+    pass
 
     __container = {
         'ftplib.ftp': ftplib.FTP(),

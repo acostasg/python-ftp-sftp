@@ -1,6 +1,7 @@
 import logging
 import unittest
 from unittest.mock import MagicMock
+import mock
 
 import injectionContainer
 import strategy.requestParams as Request

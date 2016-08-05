@@ -12,7 +12,7 @@ class Secure:
         :param request:
         :return: boolean
         """
-        ftp_module = Container.dependency('pysftp')
+        ftp_module = Container().dependency('pysftp')
         fnmatch_module = Container.dependency('fnmatch')
         os_module = Container.dependency('os')
 
@@ -21,9 +21,9 @@ class Secure:
         self.logging.info('Starting strategy secure...')
 
         for file in os_module.listdir(request.localPath):
-            if fnmatch_module.fnmatch(file, request.provider + request.pattern):
-                request.logging.info('Uploading file %s...' % file)
-                sftp.put(request.requestlocal_path + file, request.remote_path + '/' + file)
+            if fnmatch_module.fnmatch(file, request.prefix + request.pattern):
+                self.logging.info('Uploading file %s...' % file)
+                sftp.put(request.localPath + file, request.remotePath + '/' + file)
 
         self.logging.info('Files has been successfully uploaded to %s' % (request.connectionInfo['host']))
 
