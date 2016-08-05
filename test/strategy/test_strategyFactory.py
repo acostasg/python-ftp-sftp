@@ -1,14 +1,13 @@
+import logging
 import unittest
+from unittest.mock import MagicMock
 
 import injectionContainer
 import strategy.requestParams as Request
-import logging
-from unittest.mock import MagicMock
 from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestSecure(unittest.TestCase):
-
     def test_strategy_factory(self):
         import strategy.strategyFactory as Factory
 

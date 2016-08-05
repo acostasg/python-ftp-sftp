@@ -1,13 +1,13 @@
-import unittest
-import injectionContainer
-from unittest.mock import MagicMock
 import logging
+import unittest
+from unittest.mock import MagicMock
+
+import injectionContainer
 import strategy.requestParams as Request
 from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestSecure(unittest.TestCase):
-
     def test_secure_upload(self):
         from strategy \
             import secure as str_secure
@@ -25,6 +25,7 @@ class TestSecure(unittest.TestCase):
 
         unsecure = str_secure.Secure(logging)
         self.assertTrue(unsecure.upload(request))
+
 
 if __name__ == '__main__':
     unittest.main()

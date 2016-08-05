@@ -1,16 +1,17 @@
-from unittest.mock \
-    import patch
+import fnmatch
+import ftplib
+import logging
+import os
+import sys
 from unittest.mock \
     import MagicMock
-import ftplib
+
 import pysftp
-import fnmatch
-import os
 import yaml
-import sys
+
 from config \
     import ConfigApp as configApp
-import logging
+
 
 class ContainerMock:
     def __init__(
@@ -23,7 +24,6 @@ class ContainerMock:
         ftp_mock.storlines = MagicMock(return_value=0)
         ftp_mock.quit = MagicMock(return_value=0)
         ftp_mock.close = MagicMock(return_value=0)
-
 
         pysftp_mock = pysftp
         pysftp_mock.Connection = MagicMock(return_value=ftp_mock)

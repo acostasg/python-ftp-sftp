@@ -1,12 +1,11 @@
-import unittest
-import injectionContainer
-from unittest.mock import MagicMock
-import logging
 import os
+import unittest
+from unittest.mock import MagicMock
+
 import yaml
-from config \
-    import ConfigApp as config_app
-import strategy.requestParams as Request
+
+import config.ConfigApp as ConfigApp
+import injectionContainer
 from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
@@ -24,11 +23,17 @@ class TestSecure(unittest.TestCase):
             'strategy': {'default': 1},
         })
 
-        config_app.Handle(os, yaml_mock)
+        config_app = ConfigApp.Handle(os, yaml_mock)
 
         injectionContainer.Container.update(
             ContainerMock().container()
         )
+
+        config_unsercure = config_app.get_request(strategy.strategyFactory.Strategy.CONST_UNSECURE)
+        self.addTypeEqualityFunc('requestParams', config_unsercure)
+
+        config_sercure = config_app.get_request(strategy.strategyFactory.Strategy.CONST_SECURE)
+        self.addTypeEqualityFunc('requestParams', config_sercure)
 
 
 if __name__ == '__main__':
