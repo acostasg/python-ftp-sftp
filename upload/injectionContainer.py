@@ -1,12 +1,15 @@
-import ftplib
 import fnmatch
+import ftplib
+import logging
 import os
+import sys
+
 import pysftp
 import yaml
-import sys
-import logging
+
 import config.ConfigApp as ConfigApp
 from shared import SingletonMetaClass as Singleton
+
 
 class Container:
     __metaclass__ = Singleton.SingletonMetaClass

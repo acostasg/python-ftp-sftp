@@ -25,7 +25,7 @@ try:
     )
     logging.basicConfig(filename='./../logs/cronUpload.log', level=logging.DEBUG)
 except getopt.GetoptError:
-    print (
+    print(
         """Usage:\n
         ./cronUpload.py <options>\n
         Options:
@@ -72,4 +72,3 @@ request.pattern = pattern
 
 strategyObject = strategyFactory.Strategy(int(secure), logging)
 strategyObject.upload(request)
-

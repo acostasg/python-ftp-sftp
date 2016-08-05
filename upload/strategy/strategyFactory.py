@@ -1,5 +1,4 @@
 class Strategy:
-
     CONST_SECURE = 1
     CONST_UNSECURE = 2
 

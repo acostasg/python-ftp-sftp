@@ -2,6 +2,7 @@
 from injectionContainer import Container
 from strategy import strategyFactory
 
+
 def execute(log, config_app, system, os, yaml):
     log.basicConfig(filename='./../logs/appUpload.log', level=log.DEBUG)
 

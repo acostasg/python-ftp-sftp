@@ -1,12 +1,13 @@
-import unittest
-import injectionContainer
-from unittest.mock import MagicMock
 import logging
+import unittest
+from unittest.mock import MagicMock
+
+import injectionContainer
 import strategy.requestParams as Request
 from strategy.dummys.injectedContainerDummy import ContainerMock
 
-class TestUnsecure(unittest.TestCase):
 
+class TestUnsecure(unittest.TestCase):
     def test_unsecured_upload(self):
         from strategy \
             import unsecure as str_unsecure
