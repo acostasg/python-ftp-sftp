@@ -1,5 +1,5 @@
-Code status
-===========
+Quantified code
+===============
 [![Code Issues](https://www.quantifiedcode.com/api/v1/project/059551fbe726481faff6265f90b82af3/badge.svg)](https://www.quantifiedcode.com/app/project/059551fbe726481faff6265f90b82af3)
 
 
