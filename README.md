@@ -51,4 +51,4 @@ Usage Cron with params:
 
 * Coverage unittest
     * /test 100% files, 100% lines
-    * /upload 100% files, 87% lines
+    * /upload 100% files, 92% lines
