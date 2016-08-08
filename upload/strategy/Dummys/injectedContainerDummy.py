@@ -20,6 +20,7 @@ class ContainerMock(metaclass=SingleMetaClass):
     def __init__(
             self
     ):
+
         ftp_mock = ftplib
         ftp_mock.connect = MagicMock(return_value=0)
         ftp_mock.login = MagicMock(return_value=0)
@@ -28,6 +29,9 @@ class ContainerMock(metaclass=SingleMetaClass):
         ftp_mock.quit = MagicMock(return_value=0)
         ftp_mock.close = MagicMock(return_value=0)
         ftp_mock.put = MagicMock(return_value=0)
+
+        ftp_mock_base = ftplib
+        ftp_mock_base.FTP = MagicMock(return_value=ftp_mock)
 
         pysftp_mock = pysftp
         pysftp_mock.Connection = MagicMock(return_value=ftp_mock)
@@ -63,7 +67,7 @@ class ContainerMock(metaclass=SingleMetaClass):
         open_mock = MagicMock(return_value='tests')
 
         self.__container = {
-            'ftplib.ftp': ftp_mock,
+            'ftplib.ftp': ftp_mock_base,
             'pysftp': pysftp_mock,
             'fnmatch': fnmatch_mock,
             'os': os_mock,
