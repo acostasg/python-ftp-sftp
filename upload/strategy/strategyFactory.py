@@ -8,7 +8,7 @@ class Strategy:
     CONST_SECURE = 1
     CONST_UNSECURE = 2
 
-    __strategyClass = None
+    __strategy_class = None
 
     def __init__(self, type_class):
         """
@@ -20,9 +20,9 @@ class Strategy:
             import secure as str_secure, unsecure as str_unsecure
 
         if type_class == Strategy.CONST_UNSECURE:
-            self.__strategyClass = str_unsecure.Unsecure(Container.dependency('logger'))
+            self.__strategy_class = str_unsecure.Unsecure(Container.dependency('logger'))
         if type_class == Strategy.CONST_SECURE:
-            self.__strategyClass = str_secure.Secure(Container.dependency('logger'))
+            self.__strategy_class = str_secure.Secure(Container.dependency('logger'))
 
     def upload(self, request):
         """
@@ -30,4 +30,4 @@ class Strategy:
         :param request:
         :return: boolean
         """
-        return self.__strategyClass.upload(request)
+        return self.__strategy_class.upload(request)
