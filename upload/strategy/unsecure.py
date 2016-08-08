@@ -28,10 +28,10 @@ class Unsecure:
 
         for file in os_module.listdir(request.localPath):
             if fnmatch_module.fnmatch(file, request.prefix + request.pattern):
-                self.logging.info('Uploading file %s...' % file)
-                ftp.storlines('STOR %s' % file, open_module('%s%s' % (request.localPath, file), 'r'))
+                self.logging.info('Uploading file {0!s}...'.format(file))
+                ftp.storlines('STOR {0!s}'.format(file), open_module('{0!s}{1!s}'.format(request.localPath, file), 'r'))
 
-        self.logging.info('Files has been successfully uploaded to %s' % (request.connectionInfo['host']))
+        self.logging.info('Files has been successfully uploaded to {0!s}'.format((request.connectionInfo['host'])))
 
         ftp.quit()
         return True

@@ -25,10 +25,10 @@ class Secure:
 
         for file in os_module.listdir(request.localPath):
             if fnmatch_module.fnmatch(file, request.prefix + request.pattern):
-                self.logging.info('Uploading file %s...' % file)
+                self.logging.info('Uploading file {0!s}...'.format(file))
                 sftp.put(request.localPath + file, request.remotePath + '/' + file)
 
-        self.logging.info('Files has been successfully uploaded to %s' % (request.connectionInfo['host']))
+        self.logging.info('Files has been successfully uploaded to {0!s}'.format((request.connectionInfo['host'])))
 
         sftp.close()
 
