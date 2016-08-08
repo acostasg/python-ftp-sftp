@@ -12,7 +12,7 @@ class Unsecure:
         :param request:
         :return: boolean
         """
-        ftp = Container.dependency('ftplib.ftp')
+        ftp = Container.dependency('ftplib.ftp').FTP()
         fnmatch_module = Container.dependency('fnmatch')
         os_module = Container.dependency('os')
         open_module = Container.dependency('open')
