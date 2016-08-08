@@ -1,6 +1,4 @@
-import logging
 import unittest
-from unittest.mock import MagicMock
 
 import injectionContainer
 import strategy.requestParams as Request
@@ -8,12 +6,16 @@ from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestStrategyFactory(unittest.TestCase):
-    def test_strategy_factory(self):
-        import strategy.strategyFactory as Factory
+    """
+    Class test for strategy factory class
+    """
 
-        logger_mock = logging
-        logger_mock.warning = MagicMock(return_value=0)
-        logger_mock.info = MagicMock(return_value=0)
+    def test_strategy_factory(self):
+        """
+        test cases strategy factory
+        :return:
+        """
+        import strategy.strategyFactory as Factory
 
         request = Request.RequestParams()
         request.connectionInfo = {'host': '', 'port': '', 'username': '', 'password': ''}
@@ -22,8 +24,8 @@ class TestStrategyFactory(unittest.TestCase):
             ContainerMock().container()
         )
 
-        strategy = Factory.Strategy(1, logger_mock)
+        strategy = Factory.Strategy(1)
         self.assertTrue(strategy.upload(request))
 
-        strategy = Factory.Strategy(2, logger_mock)
+        strategy = Factory.Strategy(2)
         self.assertTrue(strategy.upload(request))

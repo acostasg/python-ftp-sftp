@@ -4,7 +4,15 @@ import strategy.requestParams as Request
 
 
 class TestRequestParams(unittest.TestCase):
+    """
+    Class test for request params class
+    """
+
     def test_request_params(self):
+        """
+        test case unsecured upload
+        :return:
+        """
         request_params = Request.RequestParams()
         request_params.connectionInfo = {"tests": "tests"}
         request_params.localPath = 'localPath'
@@ -21,5 +29,6 @@ class TestRequestParams(unittest.TestCase):
         str_request = str(request_params)
 
         self.assertEqual(
-            '{"connectionInfo":{\'tests\': \'tests\'},"localPath":"localPath","remotePath":"remotePath","prefix":"test_report","pattern":"*.pattern"}',
+            '{"connectionInfo":{\'tests\': \'tests\'},"localPath":"localPath",'
+            '"remotePath":"remotePath","prefix":"test_report","pattern":"*.pattern"}',
             str_request)

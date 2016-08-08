@@ -1,4 +1,8 @@
 class RequestParams:
+    """
+    Value object for request upload
+    """
+
     def __init__(self):
         self.connectionInfo = ''
         self.localPath = ''
@@ -7,4 +11,6 @@ class RequestParams:
         self.pattern = ''
 
     def __str__(self):
-        return '{"' + 'connectionInfo":' + str(self.connectionInfo) + ',"' + 'localPath":"' + self.localPath + '","' + 'remotePath":"' + self.remotePath + '","' + 'prefix":"' + self.prefix + '","' + 'pattern":"' + self.pattern + '"}'
+        return '{"' + 'connectionInfo":' + str(
+            self.connectionInfo) + ',"' + 'localPath":"' + self.localPath + '","' + 'remotePath":"' \
+               + self.remotePath + '","' + 'prefix":"' + self.prefix + '","' + 'pattern":"' + self.pattern + '"}'

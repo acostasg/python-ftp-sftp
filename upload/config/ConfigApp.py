@@ -2,6 +2,9 @@ from shared.Singleton import SingleMetaClass
 
 
 class Handle(metaclass=SingleMetaClass):
+    """
+    Config handle to reader config for app
+    """
     pass
 
     def __init__(self, os, yaml):
@@ -40,24 +43,24 @@ class Handle(metaclass=SingleMetaClass):
 
     pass
 
-    def get_request(self, type):
+    def get_request(self, type_class):
         """
-        :param type: int
+        :param type_class: int
         :return: RequestParams
         """
-        self.request.connectionInfo = self.get_connections(type)
+        self.request.connectionInfo = self.get_connections(type_class)
         return self.request
 
-    def get_connections(self, type):
+    def get_connections(self, type_class):
         """
 
-        :param type: int
+        :param type_class: int
         :return: dict
         """
         import strategy.strategyFactory
-        if type == strategy.strategyFactory.Strategy.CONST_SECURE:
+        if type_class == strategy.strategyFactory.Strategy.CONST_SECURE:
             return self.connectionInfoSecure
-        elif type == strategy.strategyFactory.Strategy.CONST_UNSECURE:
+        elif type_class == strategy.strategyFactory.Strategy.CONST_UNSECURE:
             return self.connectionInfoUnsercure
         else:
             raise Exception('Unknown strategy')
