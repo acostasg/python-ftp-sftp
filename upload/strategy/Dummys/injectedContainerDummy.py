@@ -15,12 +15,14 @@ from shared.Singleton import SingleMetaClass
 
 
 class ContainerMock(metaclass=SingleMetaClass):
+    """
+    Dummy container for testing
+    """
     pass
 
     def __init__(
             self
     ):
-
         ftp_mock = ftplib
         ftp_mock.connect = MagicMock(return_value=0)
         ftp_mock.login = MagicMock(return_value=0)

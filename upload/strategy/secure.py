@@ -2,6 +2,9 @@ from injectionContainer import Container
 
 
 class Secure:
+    """
+    Secure strategy for upload files, ftp
+    """
     def __init__(self, logging):
         self.logging = logging
         pass

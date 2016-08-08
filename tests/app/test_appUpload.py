@@ -5,6 +5,9 @@ from upload.strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestAppUpload(unittest.TestCase):
+    """
+    Test case for app Upload
+    """
     def test_app_upload(self):
         injectionContainer.Container.update(
             ContainerMock().container()

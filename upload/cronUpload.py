@@ -10,8 +10,8 @@ from strategy \
 host = ''
 username = ''
 secret = ''
-localPath = ''
-remotePath = ''
+local_path = ''
+remote_path = ''
 port = 0
 prefix = ''
 secure = 1
@@ -51,9 +51,9 @@ for opt, arg in opts:
     elif opt in ('-s', '--secret'):
         secret = arg
     elif opt in ('-l', '--local-path'):
-        localPath = arg
+        local_path = arg
     elif opt in ('-r', '--remote-path'):
-        remotePath = arg
+        remote_path = arg
     elif opt in ('-o', '--prefix'):
         prefix = arg
     elif opt in ('-c', '--is-secure'):
@@ -65,8 +65,8 @@ connectionInfo = {'host': host, 'username': username, 'password': secret, 'port'
 
 request = requestParams.RequestParams()
 request.connectionInfo = connectionInfo
-request.localPath = localPath
-request.remotePath = remotePath
+request.localPath = local_path
+request.remotePath = remote_path
 request.prefix = prefix
 request.pattern = pattern
 

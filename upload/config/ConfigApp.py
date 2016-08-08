@@ -2,6 +2,9 @@ from shared.Singleton import SingleMetaClass
 
 
 class Handle(metaclass=SingleMetaClass):
+    """
+    Config handle to reader config for app
+    """
     pass
 
     def __init__(self, os, yaml):

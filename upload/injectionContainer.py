@@ -4,6 +4,12 @@ from shared.Singleton import SingleMetaClass
 
 
 class Container(metaclass=SingleMetaClass):
+    """
+    In this post I am going to look at the basics of Dependency Injection again and how they tie in with the move to
+    using a Dependency Injection Container. The basics of why injecting an object's dependencies is a good idea are
+    fairly easy to grasp, how this then leads to the use of a container is not so easily apparent.
+
+    """
     __container = {
         'ftplib.ftp': None,
         'pysftp': None,
@@ -46,4 +52,4 @@ class Container(metaclass=SingleMetaClass):
             if name in self.__mapper:
                 return importlib.import_module(self.__mapper.get(name))
             else:
-                raise Exception('module name '+name+' no exist in the mapper')
+                raise Exception('module name ' + name + ' no exist in the mapper')

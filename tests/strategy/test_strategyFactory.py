@@ -9,6 +9,10 @@ from strategy.dummys.injectedContainerDummy import ContainerMock
 
 class TestStrategyFactory(unittest.TestCase):
     def test_strategy_factory(self):
+        """
+        test cases strategy factory
+        :return:
+        """
         import strategy.strategyFactory as Factory
 
         logger_mock = logging

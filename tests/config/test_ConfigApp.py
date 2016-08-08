@@ -10,7 +10,14 @@ from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestConfigApp(unittest.TestCase):
-    def test_configApp(self):
+    """
+    test case config App
+    """
+    def test_config_app(self):
+        """
+        test configAapp class
+        :return:
+        """
         import strategy.strategyFactory
 
         yaml_mock = yaml

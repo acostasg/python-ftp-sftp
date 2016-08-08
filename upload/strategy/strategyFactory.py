@@ -1,4 +1,7 @@
 class Strategy:
+    """
+    Factory with responsibility to instance strategy
+    """
     CONST_SECURE = 1
     CONST_UNSECURE = 2
 

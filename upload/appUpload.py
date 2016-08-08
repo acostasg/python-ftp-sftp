@@ -4,6 +4,15 @@ from strategy import strategyFactory
 
 
 def execute(logger, config_app, system, os, yaml):
+    """
+    App with config files
+    :param logger:
+    :param config_app:
+    :param system:
+    :param os:
+    :param yaml:
+    :return:
+    """
     logger.basicConfig(filename='./../logs/appUpload.log', level=logger.DEBUG)
 
     try:
@@ -31,6 +40,7 @@ def execute(logger, config_app, system, os, yaml):
     except Exception as e:
         logger.error(e)
         system.exit(2)
+
 
 execute(
     Container.dependency('logger'),

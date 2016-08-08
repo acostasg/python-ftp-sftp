@@ -1,7 +1,6 @@
 import logging
 import unittest
 from unittest.mock import MagicMock
-import mock
 
 import injectionContainer
 import strategy.requestParams as Request
@@ -10,6 +9,10 @@ from strategy.dummys.injectedContainerDummy import ContainerMock
 
 class TestUnsecure(unittest.TestCase):
     def test_unsecured_upload(self):
+        """
+        test case unsecured upload
+        :return:
+        """
         from strategy \
             import unsecure as str_unsecure
 

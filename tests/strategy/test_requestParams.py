@@ -5,6 +5,10 @@ import strategy.requestParams as Request
 
 class TestRequestParams(unittest.TestCase):
     def test_request_params(self):
+        """
+        test case unsecured upload
+        :return:
+        """
         request_params = Request.RequestParams()
         request_params.connectionInfo = {"tests": "tests"}
         request_params.localPath = 'localPath'
