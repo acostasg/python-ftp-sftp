@@ -5,7 +5,14 @@ from upload.strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestInjectedContainer(unittest.TestCase):
+    """
+    Class test for injected dependency container
+    """
+
     def test_injection_container(self):
+        """
+        Test case for injected container class
+        """
         injectionContainer.Container.update(
             ContainerMock().container()
         )

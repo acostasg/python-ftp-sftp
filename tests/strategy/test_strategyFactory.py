@@ -8,6 +8,10 @@ from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestStrategyFactory(unittest.TestCase):
+    """
+    Class test for strategy factory class
+    """
+
     def test_strategy_factory(self):
         """
         test cases strategy factory

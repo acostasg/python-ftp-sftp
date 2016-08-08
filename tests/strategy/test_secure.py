@@ -8,10 +8,13 @@ from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestSecure(unittest.TestCase):
+    """
+    Class test for sercure strategy
+    """
+
     def test_secure_upload(self):
         """
         test case secured upload
-        :return:
         """
         from strategy \
             import secure as str_secure

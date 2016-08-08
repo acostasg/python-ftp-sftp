@@ -4,6 +4,10 @@ import strategy.requestParams as Request
 
 
 class TestRequestParams(unittest.TestCase):
+    """
+    Class test for request params class
+    """
+
     def test_request_params(self):
         """
         test case unsecured upload

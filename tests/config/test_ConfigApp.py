@@ -11,8 +11,9 @@ from strategy.dummys.injectedContainerDummy import ContainerMock
 
 class TestConfigApp(unittest.TestCase):
     """
-    test case config App
+    Class test for config App
     """
+
     def test_config_app(self):
         """
         test configAapp class

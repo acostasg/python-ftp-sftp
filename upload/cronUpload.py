@@ -61,10 +61,10 @@ for opt, arg in opts:
     elif opt in ('-e', '--files-extension'):
         pattern = '*.' + arg
 
-connectionInfo = {'host': host, 'username': username, 'password': secret, 'port': int(port)}
+connection_info = {'host': host, 'username': username, 'password': secret, 'port': int(port)}
 
 request = requestParams.RequestParams()
-request.connectionInfo = connectionInfo
+request.connectionInfo = connection_info
 request.localPath = local_path
 request.remotePath = remote_path
 request.prefix = prefix

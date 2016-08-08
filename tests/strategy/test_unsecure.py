@@ -8,6 +8,10 @@ from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestUnsecure(unittest.TestCase):
+    """
+    Class test for unsercure strategy
+    """
+
     def test_unsecured_upload(self):
         """
         test case unsecured upload
