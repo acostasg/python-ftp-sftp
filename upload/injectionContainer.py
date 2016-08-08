@@ -18,7 +18,9 @@ class Container(metaclass=SingleMetaClass):
         'yaml': None,
         'sys': None,
         'config_app': None,
-        'logger': None
+        'logger': None,
+        'strategy.secure': None,
+        'strategy.unsecure': None
     }
 
     __mapper = {
@@ -29,7 +31,9 @@ class Container(metaclass=SingleMetaClass):
         'yaml': 'yaml',
         'sys': 'sys',
         'config_app': 'config.ConfigApp',
-        'logger': 'logging'
+        'logger': 'logging',
+        'strategy.secure': 'strategy.secure',
+        'strategy.unsecure': 'strategy.unsecure'
     }
 
     @staticmethod

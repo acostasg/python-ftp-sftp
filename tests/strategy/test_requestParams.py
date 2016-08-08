@@ -29,5 +29,6 @@ class TestRequestParams(unittest.TestCase):
         str_request = str(request_params)
 
         self.assertEqual(
-            '{"connectionInfo":{\'tests\': \'tests\'},"localPath":"localPath","remotePath":"remotePath","prefix":"test_report","pattern":"*.pattern"}',
+            '{"connectionInfo":{\'tests\': \'tests\'},"localPath":"localPath",'
+            '"remotePath":"remotePath","prefix":"test_report","pattern":"*.pattern"}',
             str_request)

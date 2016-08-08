@@ -15,7 +15,7 @@ class Secure:
         :param request:
         :return: boolean
         """
-        ftp_module = Container().dependency('pysftp')
+        ftp_module = Container.dependency('pysftp')
         fnmatch_module = Container.dependency('fnmatch')
         os_module = Container.dependency('os')
 

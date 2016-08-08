@@ -1,6 +1,6 @@
 import logging
 import unittest
-from unittest.mock import MagicMock
+import mock
 
 import injectionContainer
 import strategy.requestParams as Request
@@ -21,8 +21,8 @@ class TestUnsecure(unittest.TestCase):
             import unsecure as str_unsecure
 
         logger_mock = logging
-        logger_mock.warning = MagicMock(return_value=0)
-        logger_mock.info = MagicMock(return_value=0)
+        logger_mock.warning = mock.Mock(return_value=0)
+        logger_mock.info = mock.Mock(return_value=0)
 
         request = Request.RequestParams()
         request.connectionInfo = {'host': '', 'port': '', 'username': '', 'password': ''}

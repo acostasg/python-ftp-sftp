@@ -12,4 +12,5 @@ class RequestParams:
 
     def __str__(self):
         return '{"' + 'connectionInfo":' + str(
-            self.connectionInfo) + ',"' + 'localPath":"' + self.localPath + '","' + 'remotePath":"' + self.remotePath + '","' + 'prefix":"' + self.prefix + '","' + 'pattern":"' + self.pattern + '"}'
+            self.connectionInfo) + ',"' + 'localPath":"' + self.localPath + '","' + 'remotePath":"' \
+               + self.remotePath + '","' + 'prefix":"' + self.prefix + '","' + 'pattern":"' + self.pattern + '"}'

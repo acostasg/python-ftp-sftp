@@ -61,14 +61,44 @@ for opt, arg in opts:
     elif opt in ('-e', '--files-extension'):
         pattern = '*.' + arg
 
-connection_info = {'host': host, 'username': username, 'password': secret, 'port': int(port)}
 
-request = requestParams.RequestParams()
-request.connectionInfo = connection_info
-request.localPath = local_path
-request.remotePath = remote_path
-request.prefix = prefix
-request.pattern = pattern
+def execute_cron(
+        host_param,
+        username_param,
+        secret_param,
+        port_param,
+        local_path_param,
+        remote_path_param,
+        prefix_param,
+        pattern_param,
+        secure_param
+):
+    """
+    Execute strategy unsecure
 
-strategyObject = strategyFactory.Strategy(int(secure), logging)
-strategyObject.upload(request)
+    :param host_param:
+    :param username_param:
+    :param secret_param:
+    :param port_param:
+    :param local_path_param:
+    :param remote_path_param:
+    :param prefix_param:
+    :param pattern_param:
+    :param secure_param:
+    :return:
+    """
+    connection_info = {'host': host_param, 'username': username_param, 'password': secret_param,
+                       'port': int(port_param)}
+    request = requestParams.RequestParams()
+    request.connectionInfo = connection_info
+    request.localPath = local_path_param
+    request.remotePath = remote_path_param
+    request.prefix = prefix_param
+    request.pattern = pattern_param
+    strategy_instance = strategyFactory.Strategy(int(secure_param))
+    strategy_instance.upload(request)
+
+    return True
+
+
+execute_cron(host, username, secret, port, local_path, remote_path, prefix, pattern, secure)

@@ -1,3 +1,6 @@
+from injectionContainer import Container
+
+
 class Strategy:
     """
     Factory with responsibility to instance strategy
@@ -5,20 +8,21 @@ class Strategy:
     CONST_SECURE = 1
     CONST_UNSECURE = 2
 
-    def __init__(self, type, logging):
+    __strategyClass = None
+
+    def __init__(self, type_class):
         """
 
-        :param type: int
-        :param logging: logging
+        :param type_class: int
         :return: void
         """
         from strategy \
             import secure as str_secure, unsecure as str_unsecure
 
-        if type == Strategy.CONST_UNSECURE:
-            self.__strategyClass = str_unsecure.Unsecure(logging)
-        if type == Strategy.CONST_SECURE:
-            self.__strategyClass = str_secure.Secure(logging)
+        if type_class == Strategy.CONST_UNSECURE:
+            self.__strategyClass = str_unsecure.Unsecure(Container.dependency('logger'))
+        if type_class == Strategy.CONST_SECURE:
+            self.__strategyClass = str_secure.Secure(Container.dependency('logger'))
 
     def upload(self, request):
         """

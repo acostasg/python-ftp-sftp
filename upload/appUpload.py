@@ -3,15 +3,14 @@ from injectionContainer import Container
 from strategy import strategyFactory
 
 
-def execute(logger, config_app, system, os, yaml):
+def execute(logger, config_app, os, yaml):
     """
-    App with config files
+        App with config files
     :param logger:
     :param config_app:
-    :param system:
     :param os:
     :param yaml:
-    :return:
+    :return: True
     """
     logger.basicConfig(filename='./../logs/appUpload.log', level=logger.DEBUG)
 
@@ -24,12 +23,11 @@ def execute(logger, config_app, system, os, yaml):
                 /config/connections.yml
                 """ + str(e)
         )
-        system.exit(2)
+        raise Exception('Corrupt configuration files')
 
     try:
         strategy = strategyFactory.Strategy(
-            handle_config_app.get_strategy(),
-            logger
+            handle_config_app.get_strategy()
         )
 
         strategy.upload(
@@ -37,15 +35,16 @@ def execute(logger, config_app, system, os, yaml):
                 handle_config_app.get_strategy()
             )
         )
+
+        return True
     except Exception as e:
         logger.error(e)
-        system.exit(2)
+        raise Exception(e)
 
 
 execute(
     Container.dependency('logger'),
     Container.dependency('config_app'),
-    Container.dependency('sys'),
     Container.dependency('os'),
     Container.dependency('yaml')
 )
