@@ -10,10 +10,11 @@ install:
   - pip install nose
 # command to run tests
 script:
-  - python setup.py install
-  - nosetests --with-coverage      # Add me to run nose with coverage
+ - nosetests
+# - coverage run --source=pymote setup.py nosetests
+
 after_success:
-  - coveralls                     # Add me to upload reports to coveralls.io
+ - coveralls
 
 branches:
   only:
