@@ -9,11 +9,10 @@ install:
   - pip install coverage
   - pip install nose
 # command to run tests
-# Run test
 script:
-  - nosetests --with-cov --cov upload --cov-config .coveragerc --logging-level=INFO
+ - nosetests --exe --with-coverage
+ - coverage report
 
-# Calculate coverage
 after_success:
   - coveralls --config_file .coveragerc
 
