@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: UploadFiles-ftp-sftp
+Version: 0.9.0
+Summary: Upload files from directory secure/unsercure project
+Home-page: https://github.com/acostasg/upload
+Author: Albert Costas Gutierrez
+Author-email: info@lescases.com
+License: MIT
+Description: Upload files from directory with pattern secure and unsercure strategy
+Keywords: upload files from directory with pattern secure and unsercure strategy
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.5

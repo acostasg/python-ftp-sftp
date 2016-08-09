@@ -3,6 +3,7 @@ python:
   - "3.3"
   - "3.4"
   - "3.5"
+  - "pypy3"
 # command to install dependencies
 install:
   - pip install python-coveralls
@@ -11,7 +12,7 @@ install:
 # command to run tests
 script:
  - nosetests --exe
-# - coverage run --source=pymote setup.py nosetests
+ - coverage run --source=upload setup.py test
 
 after_success:
  - coveralls
