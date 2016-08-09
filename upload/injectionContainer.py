@@ -1,6 +1,6 @@
 import importlib
 
-from shared.Singleton import SingleMetaClass
+from upload.shared.Singleton import SingleMetaClass
 
 
 class Container(metaclass=SingleMetaClass):

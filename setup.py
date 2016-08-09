@@ -13,10 +13,13 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 setup(
     name='UploadFiles ftp/sftp',
 
+    test_suite='nose.collector',
+    tests_require=['nose'],
+
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.3.0',
+    version='0.9.0',
 
     description='Upload files from directory secure/unsercure project',
     long_description='Upload files from directory with pattern secure and unsercure strategy',

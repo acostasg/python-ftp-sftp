@@ -19,3 +19,15 @@ upload/strategy/strategyFactory.py
 upload/strategy/unsecure.py
 upload/strategy/dummys/__init__.py
 upload/strategy/dummys/injectedContainerDummy.py
+upload/tests/__init__.py
+upload/tests/app/__init__.py
+upload/tests/app/test_appUpload.py
+upload/tests/app/test_cronUpload.py
+upload/tests/app/test_injectedContainer.py
+upload/tests/config/__init__.py
+upload/tests/config/test_ConfigApp.py
+upload/tests/strategy/__init__.py
+upload/tests/strategy/test_requestParams.py
+upload/tests/strategy/test_secure.py
+upload/tests/strategy/test_strategyFactory.py
+upload/tests/strategy/test_unsecure.py
