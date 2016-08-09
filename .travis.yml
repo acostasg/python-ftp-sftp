@@ -3,7 +3,6 @@ python:
   - "3.3"
   - "3.4"
   - "3.5"
-  - "pypy3"
 # command to install dependencies
 install:
   - pip install python-coveralls
@@ -11,8 +10,9 @@ install:
   - pip install nose
 # command to run tests
 script:
- - nosetests --exe
- - coverage run --source=upload setup.py test
+ - nosetests --exe --with-coverage
+ - coverage run -m nose
+ - coverage report
 
 after_success:
  - coveralls
