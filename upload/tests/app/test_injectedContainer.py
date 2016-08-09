@@ -25,3 +25,7 @@ class TestInjectedContainer(unittest.TestCase):
     def test_injection_container_with_error(self):
         with self.assertRaises(Exception):
             injectionContainer.Container.dependency('failed')
+
+
+if __name__ == '__main__':
+    unittest.main()

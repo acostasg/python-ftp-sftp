@@ -32,3 +32,7 @@ class TestRequestParams(unittest.TestCase):
             '{"connectionInfo":{\'tests\': \'tests\'},"localPath":"localPath",'
             '"remotePath":"remotePath","prefix":"test_report","pattern":"*.pattern"}',
             str_request)
+
+
+if __name__ == '__main__':
+    unittest.main()

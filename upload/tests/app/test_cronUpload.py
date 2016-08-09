@@ -1,8 +1,9 @@
+import logging as log
 import unittest
 
-import injectionContainer
 import mock
-import logging as log
+
+import injectionContainer
 from upload.strategy.dummys.injectedContainerDummy import ContainerMock
 
 
@@ -37,3 +38,7 @@ class TestCronUpload(unittest.TestCase):
             'test_pattern',
             1
         ))
+
+
+if __name__ == '__main__':
+    unittest.main()

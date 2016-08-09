@@ -50,3 +50,7 @@ class TestAppUpload(unittest.TestCase):
                 injectionContainer.Container.dependency('os'),
                 injectionContainer.Container.dependency('yaml')
             )
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -3,8 +3,8 @@ import unittest
 
 import mock
 
-import upload.config.config_app as ConfigApp
 import injectionContainer
+import upload.config.config_app as ConfigApp
 from strategy.dummys.injectedContainerDummy import ContainerMock
 
 
@@ -51,3 +51,7 @@ class TestConfigApp(unittest.TestCase):
 
         with self.assertRaises(Exception):
             config_app.get_request(999)
+
+
+if __name__ == '__main__':
+    unittest.main()

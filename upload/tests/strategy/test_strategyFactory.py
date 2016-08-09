@@ -29,3 +29,7 @@ class TestStrategyFactory(unittest.TestCase):
 
         strategy = Factory.Strategy(2)
         self.assertTrue(strategy.upload(request))
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -1,5 +1,6 @@
 import logging
 import unittest
+
 import mock
 
 import injectionContainer
@@ -32,3 +33,7 @@ class TestSecure(unittest.TestCase):
 
         unsecure = str_secure.Secure(logging)
         self.assertTrue(unsecure.upload(request))
+
+
+if __name__ == '__main__':
+    unittest.main()
