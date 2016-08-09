@@ -1,4 +1,4 @@
-from injectionContainer import Container
+from upload.injectionContainer import Container
 
 
 class Strategy:
@@ -16,7 +16,7 @@ class Strategy:
         :param type_class: int
         :return: void
         """
-        from strategy \
+        from upload.strategy \
             import secure as str_secure, unsecure as str_unsecure
 
         if type_class == Strategy.CONST_UNSECURE:

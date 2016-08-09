@@ -4,7 +4,7 @@ import getopt
 import logging
 import sys
 
-from strategy \
+from upload.strategy \
     import strategyFactory, requestParams
 
 host = ''
@@ -39,7 +39,7 @@ except getopt.GetoptError:
             -c, --is-secure:[optional] 1 for sftp or 2 for ftp
             """
     )
-    sys.exit(2)
+    raise Exception('Invalid params')
 
 for opt, arg in opts:
     if opt in ('-h', '--host'):

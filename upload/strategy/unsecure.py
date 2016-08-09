@@ -1,10 +1,11 @@
-from injectionContainer import Container
+from upload.injectionContainer import Container
 
 
 class Unsecure:
     """
     Unsecure strategy for upload files, ftp
     """
+
     def __init__(self, logging):
         self.logging = logging
         pass
@@ -29,7 +30,8 @@ class Unsecure:
         for file in os_module.listdir(request.localPath):
             if fnmatch_module.fnmatch(file, request.prefix + request.pattern):
                 self.logging.info('Uploading file {0!s}...'.format(file))
-                ftp.storlines('STOR {0!s}'.format(file), open_module.execute('{0!s}{1!s}'.format(request.localPath, file), 'r'))
+                ftp.storlines('STOR {0!s}'.format(file),
+                              open_module.execute('{0!s}{1!s}'.format(request.localPath, file), 'r'))
 
         self.logging.info('Files has been successfully uploaded to {0!s}'.format((request.connectionInfo['host'])))
 

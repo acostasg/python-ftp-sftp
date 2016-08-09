@@ -1,4 +1,4 @@
-from injectionContainer import Container
+from upload.injectionContainer import Container
 
 
 class Secure:

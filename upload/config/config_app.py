@@ -1,4 +1,4 @@
-from shared.singleton import SingleMetaClass
+from upload.shared.singleton import SingleMetaClass
 
 
 class Handle(metaclass=SingleMetaClass):
@@ -14,7 +14,7 @@ class Handle(metaclass=SingleMetaClass):
         :param yaml:
         :return:
         """
-        import strategy.requestParams
+        import upload.strategy.requestParams as requestParams
 
         script_dir = os.path.dirname(__file__)
         with open(script_dir + '/../../config/connections.yml', 'r') as connectionsConfig:
@@ -32,7 +32,7 @@ class Handle(metaclass=SingleMetaClass):
 
         with open(script_dir + '/../../config/app.yml', 'r') as app_config:
             app_config = yaml.load(app_config)
-            self.request = strategy.requestParams.RequestParams()
+            self.request = requestParams.RequestParams()
             self.request.connectionInfo = self.connectionInfoSecure
             self.request.localPath = app_config['local']['path']
             self.request.remotePath = app_config['remote']['path']
@@ -57,10 +57,10 @@ class Handle(metaclass=SingleMetaClass):
         :param type_class: int
         :return: dict
         """
-        import strategy.strategyFactory
-        if type_class == strategy.strategyFactory.Strategy.CONST_SECURE:
+        import upload.strategy.strategyFactory as strategyFactory
+        if type_class == strategyFactory.Strategy.CONST_SECURE:
             return self.connectionInfoSecure
-        elif type_class == strategy.strategyFactory.Strategy.CONST_UNSECURE:
+        elif type_class == strategyFactory.Strategy.CONST_UNSECURE:
             return self.connectionInfoUnsercure
         else:
             raise Exception('Unknown strategy')

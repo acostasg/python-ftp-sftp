@@ -3,9 +3,9 @@ import unittest
 
 import mock
 
-import injectionContainer
-import upload.config.config_app as ConfigApp
-from strategy.dummys.injectedContainerDummy import ContainerMock
+import upload.config.config_app as config
+import upload.injectionContainer as injectionContainer
+from upload.strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestConfigApp(unittest.TestCase):
@@ -18,7 +18,7 @@ class TestConfigApp(unittest.TestCase):
         test configAapp class
         :return:
         """
-        import strategy.strategyFactory
+        import upload.strategy.strategyFactory as strategyFactory
 
         yaml_mock = mock.Mock()
         yaml_mock.load = mock.Mock(return_value={
@@ -36,16 +36,16 @@ class TestConfigApp(unittest.TestCase):
             ContainerMock().container()
         )
 
-        config_app = ConfigApp.Handle(os, yaml_mock)
+        config_app = config.Handle(os, yaml_mock)
 
-        config_unsercure = config_app.get_request(strategy.strategyFactory.Strategy.CONST_UNSECURE)
+        config_unsercure = config_app.get_request(strategyFactory.Strategy.CONST_UNSECURE)
         self.addTypeEqualityFunc('requestParams', config_unsercure)
 
-        config_sercure = config_app.get_request(strategy.strategyFactory.Strategy.CONST_SECURE)
+        config_sercure = config_app.get_request(strategyFactory.Strategy.CONST_SECURE)
         self.addTypeEqualityFunc('requestParams', config_sercure)
 
         config_sercure = config_app.get_strategy()
-        self.assertEqual(config_sercure, strategy.strategyFactory.Strategy.CONST_SECURE)
+        self.assertEqual(config_sercure, strategyFactory.Strategy.CONST_SECURE)
 
         self.assertRaises(Exception, config_app.get_request)
 

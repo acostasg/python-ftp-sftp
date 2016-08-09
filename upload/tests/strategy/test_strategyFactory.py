@@ -1,6 +1,6 @@
 import unittest
 
-import injectionContainer
+import upload.injectionContainer as injectionContainer
 import upload.strategy.requestParams as Request
 from upload.strategy.dummys.injectedContainerDummy import ContainerMock
 
@@ -15,7 +15,7 @@ class TestStrategyFactory(unittest.TestCase):
         test cases strategy factory
         :return:
         """
-        import strategy.strategyFactory as Factory
+        import upload.strategy.strategyFactory as Factory
 
         request = Request.RequestParams()
         request.connectionInfo = {'host': '', 'port': '', 'username': '', 'password': ''}

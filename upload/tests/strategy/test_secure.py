@@ -3,7 +3,7 @@ import unittest
 
 import mock
 
-import injectionContainer
+import upload.injectionContainer as injectionContainer
 import upload.strategy.requestParams as Request
 from upload.strategy.dummys.injectedContainerDummy import ContainerMock
 
@@ -21,7 +21,7 @@ class TestSecure(unittest.TestCase):
             ContainerMock().container()
         )
 
-        from strategy \
+        from upload.strategy \
             import secure as str_secure
 
         logger_mock = logging

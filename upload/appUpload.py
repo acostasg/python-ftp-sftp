@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-from injectionContainer import Container
-from strategy import strategyFactory
+from upload.injectionContainer import Container
+from upload.strategy import strategyFactory
 
 
 def execute(logger, config_app, os, yaml):
