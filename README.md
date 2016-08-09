@@ -1,5 +1,5 @@
  [![Code Issues](https://www.quantifiedcode.com/api/v1/project/059551fbe726481faff6265f90b82af3/badge.svg)](https://www.quantifiedcode.com/app/project/059551fbe726481faff6265f90b82af3)
- [![Coverage Status](https://coveralls.io/repos/github/acostasg/upload/badge.svg?branch=master)](https://coveralls.io/github/acostasg/upload?branch=master)
+ [![Coverage Status](https://coveralls.io/repos/github/acostasg/upload/badge.svg?branch=master&no)](https://coveralls.io/github/acostasg/upload?branch=master)
  [![Build Status](https://travis-ci.org/acostasg/upload.svg?branch=master)](https://travis-ci.org/acostasg/upload)
 
 
