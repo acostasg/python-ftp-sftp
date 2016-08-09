@@ -17,3 +17,7 @@ script:
   - nosetests --with-coverage      # Add me to run nose with coverage
 after_success:
   - coveralls                     # Add me to upload reports to coveralls.io
+
+branches:
+  only:
+    - master
