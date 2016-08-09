@@ -2,7 +2,7 @@ import logging
 import unittest
 import mock
 
-from upload import injectionContainer
+import injectionContainer
 import upload.strategy.requestParams as Request
 from upload.strategy.dummys.injectedContainerDummy import ContainerMock
 

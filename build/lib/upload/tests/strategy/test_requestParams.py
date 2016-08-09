@@ -1,6 +1,6 @@
 import unittest
 
-import strategy.requestParams as Request
+import upload.strategy.requestParams as Request
 
 
 class TestRequestParams(unittest.TestCase):

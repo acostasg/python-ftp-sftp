@@ -3,8 +3,8 @@ import unittest
 import mock
 
 import injectionContainer
-import strategy.requestParams as Request
-from strategy.dummys.injectedContainerDummy import ContainerMock
+import upload.strategy.requestParams as Request
+from upload.strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestUnsecure(unittest.TestCase):

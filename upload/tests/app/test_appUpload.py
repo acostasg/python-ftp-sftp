@@ -2,7 +2,7 @@ import unittest
 
 import mock
 
-from upload import injectionContainer
+import injectionContainer
 from upload.strategy.dummys.injectedContainerDummy import ContainerMock
 
 

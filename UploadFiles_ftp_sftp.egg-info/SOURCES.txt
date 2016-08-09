@@ -8,10 +8,12 @@ upload/__init__.py
 upload/appUpload.py
 upload/cronUpload.py
 upload/injectionContainer.py
-upload/config/ConfigApp.py
 upload/config/__init__.py
+upload/config/config_app.py
 upload/shared/Singleton.py
 upload/shared/__init__.py
+upload/shared/open_file.py
+upload/shared/singleton.py
 upload/strategy/__init__.py
 upload/strategy/requestParams.py
 upload/strategy/secure.py

@@ -3,8 +3,8 @@ import unittest
 
 import mock
 
-import upload.config.ConfigApp as ConfigApp
-from upload import injectionContainer
+import upload.config.config_app as ConfigApp
+import injectionContainer
 from strategy.dummys.injectedContainerDummy import ContainerMock
 
 

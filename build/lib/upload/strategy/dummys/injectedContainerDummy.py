@@ -1,7 +1,7 @@
 import mock
 
-from shared.Singleton import SingleMetaClass
-from strategy import requestParams
+from upload.shared.singleton import SingleMetaClass
+from upload.strategy import requestParams
 
 
 class ContainerMock(metaclass=SingleMetaClass):
@@ -37,7 +37,8 @@ class ContainerMock(metaclass=SingleMetaClass):
 
         logger_mock = self.get_logger_mock()
 
-        open_mock = mock.Mock(return_value='tests')
+        open_mock = mock.Mock()
+        open_mock.execute = mock.Mock(return_value=0)
 
         self.__container = {
             'ftplib.ftp': ftp_mock_base,

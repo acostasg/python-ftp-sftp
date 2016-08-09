@@ -1,6 +1,6 @@
 import unittest
 
-from upload import injectionContainer
+import injectionContainer
 import upload.strategy.requestParams as Request
 from upload.strategy.dummys.injectedContainerDummy import ContainerMock
 

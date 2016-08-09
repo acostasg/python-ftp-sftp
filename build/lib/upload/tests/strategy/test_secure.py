@@ -3,8 +3,8 @@ import unittest
 import mock
 
 import injectionContainer
-import strategy.requestParams as Request
-from strategy.dummys.injectedContainerDummy import ContainerMock
+import upload.strategy.requestParams as Request
+from upload.strategy.dummys.injectedContainerDummy import ContainerMock
 
 
 class TestSecure(unittest.TestCase):
@@ -16,6 +16,10 @@ class TestSecure(unittest.TestCase):
         """
         test case secured upload
         """
+        injectionContainer.Container.update(
+            ContainerMock().container()
+        )
+
         from strategy \
             import secure as str_secure
 
@@ -25,10 +29,6 @@ class TestSecure(unittest.TestCase):
 
         request = Request.RequestParams()
         request.connectionInfo = {'host': '', 'port': '', 'username': '', 'password': ''}
-
-        injectionContainer.Container.update(
-            ContainerMock().container()
-        )
 
         unsecure = str_secure.Secure(logging)
         self.assertTrue(unsecure.upload(request))

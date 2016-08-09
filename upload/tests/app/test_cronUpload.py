@@ -1,6 +1,6 @@
 import unittest
 
-from upload import injectionContainer
+import injectionContainer
 import mock
 import logging as log
 from upload.strategy.dummys.injectedContainerDummy import ContainerMock

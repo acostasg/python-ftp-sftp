@@ -1,4 +1,4 @@
-from shared.Singleton import SingleMetaClass
+from shared.singleton import SingleMetaClass
 
 
 class Handle(metaclass=SingleMetaClass):
