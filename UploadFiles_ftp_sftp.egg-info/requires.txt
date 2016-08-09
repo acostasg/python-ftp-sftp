@@ -1,0 +1,14 @@
+importlib
+pyyaml
+pysftp
+mock
+patch
+
+[dev]
+check-manifest
+
+[tests]
+coverage
+unittest
+mock
+patch
