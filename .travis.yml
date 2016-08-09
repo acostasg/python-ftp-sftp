@@ -1,9 +1,8 @@
 language: python
 python:
+  - "3.3"
+  - "3.4"
   - "3.5"
-  # does not have headers provided, please ask https://launchpad.net/~pypy/+archive/ppa
-  # maintainers to fix their pypy-dev package.
-  - "pypy"
 # command to install dependencies
 install:
   - pip install python-coveralls
