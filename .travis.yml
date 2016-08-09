@@ -11,7 +11,6 @@ install:
 # command to run tests
 script:
  - nosetests --exe --with-coverage
- - coverage run -m nose
  - coverage report
 
 after_success:
