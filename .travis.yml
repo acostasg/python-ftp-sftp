@@ -1,0 +1,19 @@
+language: python
+python:
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  # does not have headers provided, please ask https://launchpad.net/~pypy/+archive/ppa
+  # maintainers to fix their pypy-dev package.
+  - "pypy"
+# command to install dependencies
+install:
+  - pip install python-coveralls
+  - pip install coverage
+  - pip install nose
+# command to run tests
+script:
+  - python setup.py install
+  - nosetests --with-coverage      # Add me to run nose with coverage
+after_success:
+  - coveralls                     # Add me to upload reports to coveralls.io
