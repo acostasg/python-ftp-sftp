@@ -2,6 +2,9 @@ from injectionContainer import Container
 
 
 class Secure:
+    """
+    Secure strategy for upload files, ftp
+    """
     def __init__(self, logging):
         self.logging = logging
         pass
@@ -20,12 +23,12 @@ class Secure:
 
         self.logging.info('Starting strategy secure...')
 
-        for file in os_module.listdir(request.local_path):
-            if fnmatch_module.fnmatch(file, request.provider + request.pattern):
-                request.logging.info('Uploading file %s...' % file)
-                sftp.put(request.requestlocal_path + file, request.remote_path + '/' + file)
+        for file in os_module.listdir(request.localPath):
+            if fnmatch_module.fnmatch(file, request.prefix + request.pattern):
+                self.logging.info('Uploading file {0!s}...'.format(file))
+                sftp.put(request.localPath + file, request.remotePath + '/' + file)
 
-        self.logging.info('Files has been successfully uploaded to %s' % (request.connection_info['host']))
+        self.logging.info('Files has been successfully uploaded to {0!s}'.format((request.connectionInfo['host'])))
 
         sftp.close()
 

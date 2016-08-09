@@ -1,3 +1,8 @@
+Quantified code
+===============
+[![Code Issues](https://www.quantifiedcode.com/api/v1/project/059551fbe726481faff6265f90b82af3/badge.svg)](https://www.quantifiedcode.com/app/project/059551fbe726481faff6265f90b82af3)
+
+
 Basic script to upload file to sftp or ftp strategy
 ===================================================
 
@@ -11,7 +16,9 @@ Usage App with config:
   
             - In config/connections.yml
                 Connections for secure (sftp) and unsecured (ftp) strategies:
-                Host, port, username and secret.        
+                Host, port, username and secret.       
+                 
+Remember for secure sftp create in your system: ssh-keygen -R sftp.example.com
                         
 Usage Cron with params:        
 
@@ -39,10 +46,9 @@ Usage Cron with params:
         
         * Create unitary testing [https://docs.python.org/2.7/library/unittest.html]
         * Dependency Injection Pattern [https://wiki.python.org/moin/DependencyInjectionPattern]
-            - Dependency container with  container
+            - Dependency Injection with container
             - Use factory to create strategy
-            
-#TODO
 
-* 100% coverage and unitary test
-...
+* Coverage unittest
+    * /test 100% files, 100% lines
+    * /upload 100% files, 92% lines
