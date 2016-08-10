@@ -51,5 +51,4 @@ Usage Cron with params:
             - Use factory to create strategy
 
 * Coverage unittest
-    * /test 100% files, 100% lines
-    * /upload 100% files, 91% lines
+    * /upload 100% files, 100% lines
