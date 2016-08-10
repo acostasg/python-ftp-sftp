@@ -1,4 +1,3 @@
-import logging as log
 import unittest
 
 import mock
@@ -22,9 +21,6 @@ class TestCronUpload(unittest.TestCase):
             ContainerMock().container()
         )
 
-        logging = log
-        logging.basicConfig = mock.Mock(return_value=0)
-
         with self.assertRaises(Exception):
             import upload.cronUpload as cronUpload
 
@@ -32,7 +28,38 @@ class TestCronUpload(unittest.TestCase):
                 'test_host',
                 'test_username',
                 'test_secret',
-                8080,
+                80,
+                'test_local',
+                'test_remote',
+                'test_prefix',
+                'test_pattern',
+                1
+            ))
+
+    def test_cron_upload_error(self):
+        """
+        Test case upload file
+        :return:
+        """
+
+        injectionContainer.Container.update(
+            ContainerMock().container()
+        )
+
+        logger_mock = mock.Mock()
+        logger_mock.basicConfig = Exception('Unknown')
+
+        injectionContainer.Container.container.__setitem__('logger', logger_mock)
+
+        with self.assertRaises(Exception):
+            import upload.cronUpload as cronUpload
+
+        with self.assertRaises(Exception):
+            self.assertTrue(cronUpload.execute_cron(
+                'test_host',
+                'test_username',
+                'test_secret',
+                80,
                 'test_local',
                 'test_remote',
                 'test_prefix',

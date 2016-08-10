@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-import getopt
 import logging
+import upload.injectionContainer as injectionContainer
 import sys
 
 from upload.strategy \
@@ -18,13 +18,16 @@ secure = 1
 pattern = '*.csv'
 
 try:
-    opts, args = getopt.getopt(
+    logger = injectionContainer.Container.dependency('logger')
+    get_opt = injectionContainer.Container.dependency('get_opt')
+
+    opts, args = get_opt.getopt(
         sys.argv[1:], "h:p:u:s:l:r:o::c::e::",
         ["host=", "port=", "username=", "secret=", "local-path=",
          "remote-path=", "provider=", "is-secure=", "files-extension"]
     )
-    logging.basicConfig(filename='./../logs/cronUpload.log', level=logging.DEBUG)
-except getopt.GetoptError:
+    logger.basicConfig(filename='./../logs/cronUpload.log', level=logging.DEBUG)
+except get_opt.GetoptError:
     print(
         """Usage:\n
         ./cronUpload.py <options>\n

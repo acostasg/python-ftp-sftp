@@ -1,3 +1,5 @@
+import getopt
+
 import mock
 
 from upload.shared.singleton import SingleMetaClass
@@ -40,6 +42,14 @@ class ContainerMock(metaclass=SingleMetaClass):
         open_mock = mock.Mock()
         open_mock.execute = mock.Mock(return_value=0)
 
+        arg_names = [('-h', ''), ('-p', 10), ('-u', 'foo'), ('-s', 'bar'), ('-l', 'bar'), ('-r', 'bar'), ('-o', 'bar'),
+                     ('-c', 1), ('-e', 'bar')]
+        args = ['foor', 10]
+
+        get_opt = mock.Mock()
+        get_opt.getopt = mock.Mock(return_value=[arg_names,args])
+        get_opt.GetoptError = getopt.GetoptError
+
         self.__container = {
             'ftplib.ftp': ftp_mock_base,
             'pysftp': pysftp_mock,
@@ -51,7 +61,8 @@ class ContainerMock(metaclass=SingleMetaClass):
             'logger': logger_mock,
             'open': open_mock,
             'strategy.secure': strategy_mock,
-            'strategy.unsecure': strategy_mock
+            'strategy.unsecure': strategy_mock,
+            'get_opt': get_opt
         }
         pass
 

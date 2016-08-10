@@ -1,5 +1,6 @@
 import importlib
 
+
 class Container:
     """
     In this post I am going to look at the basics of Dependency Injection again and how they tie in with the move to
@@ -18,7 +19,8 @@ class Container:
         'logger': None,
         'strategy.secure': None,
         'strategy.unsecure': None,
-        'open': None
+        'open': None,
+        'get_opt': None
     }
 
     mapper = {
@@ -32,11 +34,12 @@ class Container:
         'logger': 'logging',
         'strategy.secure': 'strategy.secure',
         'strategy.unsecure': 'strategy.unsecure',
-        'open': 'shared.open_file'
+        'open': 'shared.open_file',
+        'get_opt': 'getopt'
     }
 
     @staticmethod
-    def dependency(key):
+    def dependency(key: str) -> str:
         return Container.__import_module(key)
 
     @staticmethod
@@ -53,6 +56,7 @@ class Container:
             return Container.container.get(name)
         else:
             if name in Container.mapper:
-                return importlib.import_module(Container.mapper.get(name))
+                Container.container.__setitem__(name, importlib.import_module(Container.mapper.get(name)))
+                return Container.container.get(name)
             else:
                 raise Exception('module name ' + name + ' no exist in the mapper')
