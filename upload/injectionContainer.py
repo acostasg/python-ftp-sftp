@@ -8,20 +8,7 @@ class Container:
     fairly easy to grasp, how this then leads to the use of a container is not so easily apparent.
 
     """
-    container = {
-        'ftplib.ftp': None,
-        'pysftp': None,
-        'fnmatch': None,
-        'os': None,
-        'yaml': None,
-        'sys': None,
-        'config_app': None,
-        'logger': None,
-        'strategy.secure': None,
-        'strategy.unsecure': None,
-        'open': None,
-        'get_opt': None
-    }
+    container = {}
 
     mapper = {
         'ftplib.ftp': 'ftplib',
@@ -34,12 +21,12 @@ class Container:
         'logger': 'logging',
         'strategy.secure': 'strategy.secure',
         'strategy.unsecure': 'strategy.unsecure',
-        'open': 'shared.open_file',
+        'open': 'upload.shared.open_file',
         'get_opt': 'getopt'
     }
 
     @staticmethod
-    def dependency(key: str) -> str:
+    def dependency(key: str):
         return Container.__import_module(key)
 
     @staticmethod
@@ -51,7 +38,7 @@ class Container:
         return Container.container
 
     @staticmethod
-    def __import_module(name):
+    def __import_module(name: str):
         if Container.container.get(name) is not None:
             return Container.container.get(name)
         else:
@@ -59,4 +46,4 @@ class Container:
                 Container.container.__setitem__(name, importlib.import_module(Container.mapper.get(name)))
                 return Container.container.get(name)
             else:
-                raise Exception('module name ' + name + ' no exist in the mapper')
+                raise Exception('Module name ' + name + ' no exist in the mapper')

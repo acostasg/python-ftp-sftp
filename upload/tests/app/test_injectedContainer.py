@@ -13,6 +13,12 @@ class TestInjectedContainer(unittest.TestCase):
         """
         Test case for injected container class
         """
+        self.reset_container()
+
+        open_test = injectionContainer.Container.dependency('open')
+
+        self.assertIsNotNone(open_test)
+
         injectionContainer.Container.update(
             ContainerMock().container()
         )
@@ -25,6 +31,23 @@ class TestInjectedContainer(unittest.TestCase):
     def test_injection_container_with_error(self):
         with self.assertRaises(Exception):
             injectionContainer.Container.dependency('failed')
+
+    @staticmethod
+    def reset_container():
+        injectionContainer.Container.update({
+            'ftplib.ftp': None,
+            'pysftp': None,
+            'fnmatch': None,
+            'os': None,
+            'yaml': None,
+            'sys': None,
+            'config_app': None,
+            'logger': None,
+            'strategy.secure': None,
+            'strategy.unsecure': None,
+            'open': None,
+            'get_opt': None
+        })
 
 
 if __name__ == '__main__':

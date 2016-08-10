@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 import logging
-import upload.injectionContainer as injectionContainer
 import sys
 
+import upload.injectionContainer as injectionContainer
 from upload.strategy \
     import strategyFactory, requestParams
 
@@ -18,16 +18,15 @@ secure = 1
 pattern = '*.csv'
 
 try:
-    logger = injectionContainer.Container.dependency('logger')
     get_opt = injectionContainer.Container.dependency('get_opt')
-
+    logger = injectionContainer.Container.dependency('logger')
     opts, args = get_opt.getopt(
         sys.argv[1:], "h:p:u:s:l:r:o::c::e::",
         ["host=", "port=", "username=", "secret=", "local-path=",
          "remote-path=", "provider=", "is-secure=", "files-extension"]
     )
-    logger.basicConfig(filename='./../logs/cronUpload.log', level=logging.DEBUG)
-except get_opt.GetoptError:
+
+except Exception:
     print(
         """Usage:\n
         ./cronUpload.py <options>\n
@@ -74,7 +73,8 @@ def execute_cron(
         remote_path_param,
         prefix_param,
         pattern_param,
-        secure_param
+        secure_param,
+        logger
 ):
     """
     Execute strategy unsecure
@@ -90,18 +90,23 @@ def execute_cron(
     :param secure_param:
     :return:
     """
-    connection_info = {'host': host_param, 'username': username_param, 'password': secret_param,
-                       'port': int(port_param)}
-    request = requestParams.RequestParams()
-    request.connectionInfo = connection_info
-    request.localPath = local_path_param
-    request.remotePath = remote_path_param
-    request.prefix = prefix_param
-    request.pattern = pattern_param
-    strategy_instance = strategyFactory.Strategy(int(secure_param))
-    strategy_instance.upload(request)
+    try:
+        logger.basicConfig(filename='./../logs/cronUpload.log', level=logging.DEBUG)
+        connection_info = {'host': host_param, 'username': username_param, 'password': secret_param,
+                           'port': int(port_param)}
+        request = requestParams.RequestParams()
+        request.connectionInfo = connection_info
+        request.localPath = local_path_param
+        request.remotePath = remote_path_param
+        request.prefix = prefix_param
+        request.pattern = pattern_param
+        strategy_instance = strategyFactory.Strategy(int(secure_param))
+        strategy_instance.upload(request)
 
-    return True
+        return True
+    except Exception as e:
+        logger.error(e)
+        raise Exception(e)
 
 
-execute_cron(host, username, secret, port, local_path, remote_path, prefix, pattern, secure)
+execute_cron(host, username, secret, port, local_path, remote_path, prefix, pattern, secure, logger)

@@ -47,7 +47,7 @@ class ContainerMock(metaclass=SingleMetaClass):
         args = ['foor', 10]
 
         get_opt = mock.Mock()
-        get_opt.getopt = mock.Mock(return_value=[arg_names,args])
+        get_opt.getopt = mock.Mock(return_value=[arg_names, args])
         get_opt.GetoptError = getopt.GetoptError
 
         self.__container = {

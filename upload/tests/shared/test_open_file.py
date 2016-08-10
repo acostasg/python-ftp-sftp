@@ -22,7 +22,5 @@ class TestRequestParams(unittest.TestCase):
         with self.assertRaises(FileNotFoundError):
             open_file.execute('FailedTest', 'r')
 
-
-
 if __name__ == '__main__':
     unittest.main()
