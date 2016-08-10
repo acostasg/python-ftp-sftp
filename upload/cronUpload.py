@@ -88,6 +88,7 @@ def execute_cron(
     :param prefix_param:
     :param pattern_param:
     :param secure_param:
+    :param logger:
     :return:
     """
     try:

@@ -13,7 +13,7 @@ class TestInjectedContainer(unittest.TestCase):
         """
         Test case for injected container class
         """
-        self.reset_container()
+        self.__reset_container()
 
         open_test = injectionContainer.Container.dependency('open')
 
@@ -33,7 +33,7 @@ class TestInjectedContainer(unittest.TestCase):
             injectionContainer.Container.dependency('failed')
 
     @staticmethod
-    def reset_container():
+    def __reset_container():
         injectionContainer.Container.update({
             'ftplib.ftp': None,
             'pysftp': None,

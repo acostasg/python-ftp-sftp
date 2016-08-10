@@ -61,7 +61,6 @@ class TestCronUpload(unittest.TestCase):
         with self.assertRaises(Exception):
             import upload.cronUpload as cronUpload
 
-
     def test_cron_upload_error(self):
         """
         Test case upload file
