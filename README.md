@@ -1,5 +1,6 @@
  [![Code Issues](https://www.quantifiedcode.com/api/v1/project/059551fbe726481faff6265f90b82af3/badge.svg)](https://www.quantifiedcode.com/app/project/059551fbe726481faff6265f90b82af3)
- [![Coverage Status](https://coveralls.io/repos/github/acostasg/upload/badge.svg?branch=master)](https://coveralls.io/github/acostasg/upload?branch=master)
+ [![Python versions](https://img.shields.io/badge/python-3.3,%203.4,%203.5-blue.svg?style=flat)](https://www.python.org/download/releases/3.0/)
+ [![Coverage Status](https://coveralls.io/repos/github/acostasg/upload/badge.svg?branch=master&no)](https://coveralls.io/github/acostasg/upload?branch=master)
  [![Build Status](https://travis-ci.org/acostasg/upload.svg?branch=master)](https://travis-ci.org/acostasg/upload)
 
 
@@ -51,4 +52,4 @@ Usage Cron with params:
 
 * Coverage unittest
     * /test 100% files, 100% lines
-    * /upload 100% files, 92% lines
+    * /upload 100% files, 91% lines
