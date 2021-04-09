@@ -28,8 +28,8 @@ setup(
     url='https://github.com/acostasg/upload',
 
     # Author details
-    author='Albert Costas Gutierrez',
-    author_email='info@lescases.com',
+    author='Albert',
+    author_email='git@lescases.com',
 
     # Choose your license
     license='MIT',
